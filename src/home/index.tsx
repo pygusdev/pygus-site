@@ -1,13 +1,9 @@
-import { Header } from "../component/header"
-
-
+import { Header } from '../component/header'
 
 export const Home = () => {
-    return (
-        <>
-             <Header />
-      
-        
-        </>
-    )
+  return (
+    <>
+      <Header />
+    </>
+  )
 }
