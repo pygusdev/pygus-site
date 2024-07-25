@@ -24,20 +24,20 @@ export const Header: React.FC = () => {
     
       <Flex gap={8} ml={16} >    
 
-        <ChakraLink  href="/" fontSize="xl" fontWeight={activeLink === '/' ? "500": "400"} color={activeLink === '/' ? '#F47327' : '#27272A'} onClick={(event) => handleLinkClick(event, '/')} _hover={{  color: '#F47327' }}>
+        <ChakraLink  href="/" fontSize="xl" fontWeight={activeLink === '/' ? "500": "400"} color={activeLink === '/' ? '#F47327' : '#27272A'} onClick={(event) => handleLinkClick(event, '/')} >
           Início
         </ChakraLink>
 
-        <ChakraLink href="/app" fontSize="xl" fontWeight={activeLink === '/app' ? "500": "400"} color={activeLink === '/app' ? '#F47327' : '#27272A'} onClick={(event) => handleLinkClick(event, '/app')} _hover={{  color: '#F47327' }} >
+        <ChakraLink href="/app" fontSize="xl" fontWeight={activeLink === '/app' ? "500": "400"} color={activeLink === '/app' ? '#F47327' : '#27272A'} onClick={(event) => handleLinkClick(event, '/app')}  >
           App
         </ChakraLink>
-        <ChakraLink href="/precos" fontSize="xl" fontWeight={activeLink === '/precos' ? "500": "400"} color={activeLink === '/precos' ? '#F47327' : '#27272A'} onClick={(event) => handleLinkClick(event, '/precos')} _hover={{  color: '#F47327' }}>
+        <ChakraLink href="/precos" fontSize="xl" fontWeight={activeLink === '/precos' ? "500": "400"} color={activeLink === '/precos' ? '#F47327' : '#27272A'} onClick={(event) => handleLinkClick(event, '/precos')} >
           Preços
         </ChakraLink>
-        <ChakraLink href="/contato" fontSize="xl" fontWeight={activeLink === '/contato' ? "500": "400"} color={activeLink === '/contato' ? '#F47327' : '#27272A'} onClick={(event) => handleLinkClick(event, '/contato')} _hover={{  color: '#F47327' }}>
+        <ChakraLink href="/contato" fontSize="xl" fontWeight={activeLink === '/contato' ? "500": "400"} color={activeLink === '/contato' ? '#F47327' : '#27272A'} onClick={(event) => handleLinkClick(event, '/contato')} >
           Contato
         </ChakraLink>
-        <ChakraLink href="/faq" fontSize="xl"fontWeight={activeLink === '/faq' ? "500": "400"} color={activeLink === '/faq' ? '#F47327' : '#27272A'} onClick={(event) => handleLinkClick(event, '/faq')} _hover={{  color: '#F47327' }}>
+        <ChakraLink href="/faq" fontSize="xl"fontWeight={activeLink === '/faq' ? "500": "400"} color={activeLink === '/faq' ? '#F47327' : '#27272A'} onClick={(event) => handleLinkClick(event, '/faq')} >
           FAQ
         </ChakraLink>
       </Flex>
