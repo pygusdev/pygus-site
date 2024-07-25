@@ -60,7 +60,11 @@ export const CardPlans = ({
             fontSize="3xl"
             color="#3F3F46"
           >
-            R$ {price.toFixed(2)}
+            R${' '}
+            {price.toLocaleString('pt-BR', {
+              minimumFractionDigits: 2,
+              maximumFractionDigits: 2,
+            })}
           </Text>
           <Text fontFamily="Poppins" fontSize="lg" color="#3F3F46">
             /mês
