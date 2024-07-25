@@ -1,39 +1,50 @@
 
-import { Box, Flex, Link, Image } from '@chakra-ui/react';
+import { Flex, Image, Link as ChakraLink } from '@chakra-ui/react';
+import LogoImg from '../assets/logoImg.svg'
+import { useState } from 'react';
 
 
+export const Header: React.FC = () => {
+  const [activeLink, setActiveLink] = useState('/');
 
-export const Header = () => {
+  const handleLinkClick = (event: React.MouseEvent<HTMLAnchorElement, MouseEvent>, path: string) => {
+    event.preventDefault();
+    setActiveLink(path);
+    window.history.pushState({}, '', path); // Atualiza a URL sem recarregar a página
+  };
 
   return (
-    <Box   p='24px' paddingLeft='80px'>
-    <Flex align="center" >
+
+    <Flex align="center" px={20} py={6} bgGradient='linear(to-r, white, white, #DFEFF9, #B9DCF3)'> 
       
-      <Link href="/" _hover={{ textDecoration: 'none' }}>
-        <Image src="/src/assets/logoImg.svg" alt="Logo" width="100px" height="48px" />
-      </Link>
+        <ChakraLink href="/"  onClick={(event) => handleLinkClick(event, '/')}>
+        <Image src={LogoImg} alt="Logo" />
+      </ChakraLink>
    
-      <Box paddingLeft='64px'>
-      <Flex gap='32px'>
-        <Link href="/" fontSize="20px"  _hover={{ textDecoration: 'underline', color: '#F47327', fontWeight: '500' }}>
+    
+      <Flex gap={8} ml={16} >    
+
+        <ChakraLink  href="/" fontSize="xl" fontWeight={activeLink === '/' ? "500": "400"} color={activeLink === '/' ? '#F47327' : '#27272A'} onClick={(event) => handleLinkClick(event, '/')} _hover={{  color: '#F47327' }}>
           Início
-        </Link>
-        <Link href="/app" fontSize="20px" _hover={{ textDecoration: 'underline', color: '#F47327', fontWeight: '500' }}>
+        </ChakraLink>
+
+        <ChakraLink href="/app" fontSize="xl" fontWeight={activeLink === '/app' ? "500": "400"} color={activeLink === '/app' ? '#F47327' : '#27272A'} onClick={(event) => handleLinkClick(event, '/app')} _hover={{  color: '#F47327' }} >
           App
-        </Link>
-        <Link href="/precos" fontSize="20px" _hover={{ textDecoration: 'underline', color: '#F47327', fontWeight: '500' }}>
+        </ChakraLink>
+        <ChakraLink href="/precos" fontSize="xl" fontWeight={activeLink === '/precos' ? "500": "400"} color={activeLink === '/precos' ? '#F47327' : '#27272A'} onClick={(event) => handleLinkClick(event, '/precos')} _hover={{  color: '#F47327' }}>
           Preços
-        </Link>
-        <Link href="/contato" fontSize="20px" _hover={{ textDecoration: 'underline', color: '#F47327', fontWeight: '500' }}>
+        </ChakraLink>
+        <ChakraLink href="/contato" fontSize="xl" fontWeight={activeLink === '/contato' ? "500": "400"} color={activeLink === '/contato' ? '#F47327' : '#27272A'} onClick={(event) => handleLinkClick(event, '/contato')} _hover={{  color: '#F47327' }}>
           Contato
-        </Link>
-        <Link href="/faq" fontSize="20px" _hover={{ textDecoration: 'underline', color: '#F47327', fontWeight: '500' }}>
+        </ChakraLink>
+        <ChakraLink href="/faq" fontSize="xl"fontWeight={activeLink === '/faq' ? "500": "400"} color={activeLink === '/faq' ? '#F47327' : '#27272A'} onClick={(event) => handleLinkClick(event, '/faq')} _hover={{  color: '#F47327' }}>
           FAQ
-        </Link>
+        </ChakraLink>
       </Flex>
-      </Box>
+ 
+    
     </Flex>
-  </Box>
+
 
   );
 };
