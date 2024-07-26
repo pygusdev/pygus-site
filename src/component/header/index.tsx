@@ -11,7 +11,7 @@ export const Header: React.FC = () => {
   ) => {
     event.preventDefault()
     setActiveLink(path)
-    window.history.pushState({}, '', path) // Atualiza a URL sem recarregar a página
+    window.history.pushState({}, '', path)
   }
 
   return (
@@ -19,7 +19,10 @@ export const Header: React.FC = () => {
       align="center"
       px={20}
       py={6}
-      bgGradient="linear(to-r, white, white, #DFEFF9, #B9DCF3)"
+      style={{
+        background:
+          'linear-gradient(89.86deg, #FFFFFF 53.54%, #F0F8FD 60.58%, #DEEEFA 69.56%, #CCE5F6 81%, #C1DFF4 86.66%, #B2D8F2 99.81%)',
+      }}
     >
       <ChakraLink href="/" onClick={(event) => handleLinkClick(event, '/')}>
         <Image src={LogoImg} alt="Logo" />
@@ -33,6 +36,7 @@ export const Header: React.FC = () => {
           color={activeLink === '/' ? '#F47327' : '#27272A'}
           onClick={(event) => handleLinkClick(event, '/')}
           _hover={{ textDecoration: 'none' }}
+          fontFamily="Poppins"
         >
           Início
         </ChakraLink>
@@ -44,6 +48,7 @@ export const Header: React.FC = () => {
           color={activeLink === '/app' ? '#F47327' : '#27272A'}
           onClick={(event) => handleLinkClick(event, '/app')}
           _hover={{ textDecoration: 'none' }}
+          fontFamily="Poppins"
         >
           App
         </ChakraLink>
@@ -54,6 +59,7 @@ export const Header: React.FC = () => {
           color={activeLink === '/precos' ? '#F47327' : '#27272A'}
           onClick={(event) => handleLinkClick(event, '/precos')}
           _hover={{ textDecoration: 'none' }}
+          fontFamily="Poppins"
         >
           Preços
         </ChakraLink>
@@ -64,6 +70,7 @@ export const Header: React.FC = () => {
           color={activeLink === '/contato' ? '#F47327' : '#27272A'}
           onClick={(event) => handleLinkClick(event, '/contato')}
           _hover={{ textDecoration: 'none' }}
+          fontFamily="Poppins"
         >
           Contato
         </ChakraLink>
@@ -74,6 +81,7 @@ export const Header: React.FC = () => {
           color={activeLink === '/faq' ? '#F47327' : '#27272A'}
           onClick={(event) => handleLinkClick(event, '/faq')}
           _hover={{ textDecoration: 'none' }}
+          fontFamily="Poppins"
         >
           FAQ
         </ChakraLink>
