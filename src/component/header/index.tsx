@@ -1,14 +1,8 @@
-<<<<<<< HEAD:src/component/header.tsx
-import { Flex, Image, Link as ChakraLink } from '@chakra-ui/react'
-import LogoImg from '../assets/logoImg.svg'
-import { useState } from 'react'
-=======
 
 import { Flex, Image, Link as ChakraLink } from '@chakra-ui/react';
 import LogoImg from '../../assets/logoImg.svg'
 import { useState } from 'react';
 
->>>>>>> 417c638 ('feat: creation of subfolder in components folder'):src/component/header/index.tsx
 
 export const Header: React.FC = () => {
   const [activeLink, setActiveLink] = useState('/')
