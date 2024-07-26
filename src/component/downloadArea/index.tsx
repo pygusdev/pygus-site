@@ -13,10 +13,16 @@ export const DownloadArea: React.FC = () => {
       bgGradient="linear(to-r, white, white, #DFEFF9, #B9DCF3)"
     >
       <Box textAlign="left" mr={8}>
-        <Text fontSize="184px" mb={6} color="#F47327">
+        <Text fontSize="184px" mb={6} color="#F47327" fontFamily="Poppins">
           PYGUS
         </Text>
-        <Text fontWeight="light" fontSize="32px" color="#52525B" mb={14}>
+        <Text
+          fontWeight="light"
+          fontSize="32px"
+          color="#52525B"
+          mb={14}
+          fontFamily="Poppins"
+        >
           Desenvolvido para transformar a fala de crianças com transtorno dos
           sons da fala.
         </Text>
@@ -31,7 +37,7 @@ export const DownloadArea: React.FC = () => {
             <Image src={appleStoreSvg} mr={4} alt="Logo apple" />
             <Box>
               <Text fontSize="xs">Download na</Text>
-              <Text fontWeight="medium" fontSize="md">
+              <Text fontWeight="medium" fontSize="md" fontFamily="Poppins">
                 App Store
               </Text>
             </Box>
@@ -46,7 +52,7 @@ export const DownloadArea: React.FC = () => {
             <Image src={googlePlaySvg} mr={4} alt="Logo android" />
             <Box>
               <Text fontSize="xs">Download na</Text>
-              <Text fontWeight="medium" fontSize="md">
+              <Text fontWeight="medium" fontSize="md" fontFamily="Poppins">
                 Google Play
               </Text>
             </Box>
