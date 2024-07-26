@@ -5,28 +5,21 @@ import cellPhoneImage from '../../assets/imagecelulares.svg'
 
 export const DownloadArea: React.FC = () => {
   return (
-    <Flex
-      alignItems="center"
-      justifyContent="center"
-      px={20}
-      py={24}
-      bgGradient="linear(to-r, white, white, #DFEFF9, #B9DCF3)"
-    >
+    <Flex pl={20}>
       <Box textAlign="left" mr={8}>
-        <Text fontSize="184px" mb={6} color="#F47327" fontFamily="Poppins">
+        <Text fontSize="184px" color="#F47327" fontFamily="Poppins">
           PYGUS
         </Text>
         <Text
           fontWeight="light"
           fontSize="32px"
           color="#52525B"
-          mb={14}
           fontFamily="Poppins"
         >
           Desenvolvido para transformar a fala de crianças com transtorno dos
           sons da fala.
         </Text>
-        <Stack direction="row" spacing={6} align="center">
+        <Stack direction="row" spacing={6} align="center" mt={14}>
           <Button
             variant="outline"
             as="a"
@@ -59,13 +52,22 @@ export const DownloadArea: React.FC = () => {
           </Button>
         </Stack>
       </Box>
-      <Image
-        src={cellPhoneImage}
-        alt="Imagem com 3 celulares"
-        boxSize="auto"
-        ml={8}
-        mt={4}
-      />
+      <Flex
+        justifyContent="flex-end"
+        w="100%"
+        style={{
+          background:
+            'radial-gradient(75.96% 66.21% at 93.03% 14.84%, #AFD6F1 12.21%, #FEFFFF 100%)',
+        }}
+      >
+        <Image
+          src={cellPhoneImage}
+          alt="Imagem com 3 celulares"
+          boxSize="auto"
+          ml={8}
+          pr={20}
+        />
+      </Flex>
     </Flex>
   )
 }
