@@ -1,5 +1,5 @@
 import { Flex, Image, Link as ChakraLink } from '@chakra-ui/react'
-import LogoImg from '../assets/logoImg.svg'
+import LogoImg from '../../assets/logoImg.svg'
 import { useState } from 'react'
 
 export const Header: React.FC = () => {
