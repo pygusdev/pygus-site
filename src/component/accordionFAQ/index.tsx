@@ -16,6 +16,7 @@ export const AccordionFAQ = ({ title, description }: AccordionFAQProps) => {
           <AccordionButton
             fontSize="lg"
             fontWeight="500"
+            fontFamily="Poppins"
             color="#3F3F46"
             _hover={{ bgColor: '#DBEAFE' }}
           >
@@ -25,7 +26,13 @@ export const AccordionFAQ = ({ title, description }: AccordionFAQProps) => {
             <AccordionIcon />
           </AccordionButton>
         </h2>
-        <AccordionPanel pb={4} fontWeight="400" color="#3F3F46" fontSize="md">
+        <AccordionPanel
+          pb={4}
+          fontWeight="400"
+          color="#3F3F46"
+          fontSize="md"
+          fontFamily="Poppins"
+        >
           {description}
         </AccordionPanel>
       </AccordionItem>
