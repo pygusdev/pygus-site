@@ -1,0 +1,78 @@
+import { Flex, Box, Text } from '@chakra-ui/react'
+import { AccordionFAQ } from '../accordionFAQ'
+
+export const FaqArea = () => {
+  const faqData = [
+    {
+      title: 'Como usuário será vinculado ao paciente?',
+      description:
+        'No aplicativo do profissional, será gerado um código QR exclusivo que pode ser facilmente compartilhado com os clientes. Ao escanear esse código com o aplicativo do cliente, o vínculo entre o cliente e o profissional será estabelecido automaticamente, proporcionando uma conexão rápida e eficiente para acompanhamento e suporte contínuo.',
+    },
+    {
+      title: 'Como posso assinar um plano?',
+      description:
+        'Atualmente, nossos planos podem ser assinados entrando em contato diretamente com a equipe Pygus. Em breve, ofereceremos um processo de assinatura automatizado para sua conveniência.',
+    },
+    {
+      title: 'Qual diferença entre o plano personalizado e os demais planos?',
+      description:
+        'O plano personalizado permite gerenciar mais de 20 usuários.',
+    },
+    {
+      title: 'Posso usar o aplicativo com qualquer paciente?',
+      description:
+        'Sim, o aplicativo é especialmente desenvolvido para pacientes com dificuldades na fala.',
+    },
+    {
+      title: 'Como funciona o aplicativo?',
+      description:
+        'O aplicativo é simples e intuitivo. Após o vínculo entre paciente e profissional, o profissional pode avaliar o paciente, liberar fonemas para prática e acompanhar o progresso de forma eficiente.',
+    },
+  ]
+
+  return (
+    <Flex alignItems="center" px={12} mt="120px">
+      <Flex flexDir="column" w="30%" justifyContent="flex-start">
+        <Text
+          fontWeight="300"
+          fontSize="3xl"
+          fontFamily="Poppins"
+          color="#52525B"
+        >
+          Tem alguma
+          <Text
+            fontWeight="500"
+            fontSize="4xl"
+            fontFamily="Poppins"
+            color="#F47327"
+          >
+            dúvida?
+          </Text>
+          <Text
+            fontWeight="300"
+            fontSize="3xl"
+            fontFamily="Poppins"
+            color="#52525B"
+          >
+            Nós
+          </Text>
+          <Text
+            fontWeight="500"
+            fontSize="4xl"
+            fontFamily="Poppins"
+            color="#F47327"
+          >
+            respondemos.
+          </Text>
+        </Text>
+      </Flex>
+      <Box w="100%" gap={4}>
+        {faqData.map((item, index) => (
+          <Box key={index} mb={4}>
+            <AccordionFAQ title={item.title} description={item.description} />
+          </Box>
+        ))}
+      </Box>
+    </Flex>
+  )
+}
