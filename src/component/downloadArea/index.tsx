@@ -5,7 +5,7 @@ import cellPhoneImage from '../../assets/imagecelulares.svg'
 
 export const DownloadArea: React.FC = () => {
   return (
-    <Flex pl={20}>
+    <Flex pl={20} pt={20}>
       <Box textAlign="left" mr={8}>
         <Text fontSize="184px" color="#F47327" fontFamily="Poppins">
           PYGUS

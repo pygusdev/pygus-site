@@ -5,4 +5,5 @@ export interface CardPlansProps {
   titleButton: string
   isMoreRecommended?: boolean
   onPressCard: () => void
+  isPersonalized?: boolean
 }

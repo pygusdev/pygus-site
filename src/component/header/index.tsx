@@ -17,6 +17,12 @@ export const Header: React.FC = () => {
   return (
     <Flex
       align="center"
+      position="fixed"
+      top="0"
+      left="0"
+      right="0"
+      zIndex="1000"
+      w="100%"
       px={20}
       py={6}
       style={{
