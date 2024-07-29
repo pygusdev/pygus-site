@@ -31,7 +31,7 @@ export const FaqArea = () => {
   ]
 
   return (
-    <Flex alignItems="center" px={12} mt="120px">
+    <Flex id="faq" alignItems="center" px={12} mt="120px">
       <Flex flexDir="column" w="30%" justifyContent="flex-start">
         <Text
           fontWeight="300"

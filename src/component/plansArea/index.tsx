@@ -41,8 +41,17 @@ export const PlansArea = () => {
       isPersonalized: true,
     },
   ]
+  const whatsappNumber = '+5582988518859'
+  const message = encodeURIComponent(
+    'Olá, estou interessado em saber mais sobre os produtos pygus!',
+  )
+  const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${message}`
+
+  const handleWhatsAppClick = () => {
+    window.open(whatsappUrl, '_blank')
+  }
   return (
-    <Flex flexDir="column" position="relative">
+    <Flex id="precos" flexDir="column" position="relative">
       <Lottie
         animationData={lottieJson}
         play
@@ -82,7 +91,7 @@ export const PlansArea = () => {
               quantityUser={item.quantityUser}
               titleButton="Entrar em contato"
               isMoreRecommended={item.isMoreRecommended}
-              onPressCard={() => console.log('entrar em contato')}
+              onPressCard={handleWhatsAppClick}
               isPersonalized={item.isPersonalized}
             />
           </Flex>
