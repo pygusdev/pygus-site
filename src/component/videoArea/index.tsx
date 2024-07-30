@@ -5,13 +5,13 @@ export const VideoArea = () => {
   return (
     <Flex
       w="100%"
-      h="1440px"
+      h="1000px"
       bgImage={backgroundImage}
       bgPosition="center"
       bgRepeat="no-repeat"
-      bgSize="contain"
       alignItems="center"
       justifyContent="center"
+   
     >
       <iframe
         width="910"

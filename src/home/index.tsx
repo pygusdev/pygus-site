@@ -1,3 +1,5 @@
+
+import { AppArea } from '../component/appArea'
 import { DownloadArea } from '../component/downloadArea/index'
 import { FaqArea } from '../component/faqArea'
 import { Footer } from '../component/footer'
@@ -6,11 +8,13 @@ import { PlansArea } from '../component/plansArea'
 import { TimeArea } from '../component/timeArea'
 import { VideoArea } from '../component/videoArea'
 
+
 export const Home = () => {
   return (
     <>
-      <Header />
-      <DownloadArea />
+      <Header />  
+      <DownloadArea /> 
+      <AppArea />
       <VideoArea />
       <PlansArea />
       <FaqArea />
