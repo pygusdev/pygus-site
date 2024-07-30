@@ -9,7 +9,6 @@ export const VideoArea = () => {
       bgImage={backgroundImage}
       bgPosition="center"
       bgRepeat="no-repeat"
-      bgSize="contain"
       alignItems="center"
       justifyContent="center"
    
