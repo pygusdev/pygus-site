@@ -7,14 +7,14 @@ export const DownloadArea: React.FC = () => {
   return (
     <Flex pl={20} pt={20}>
       <Box textAlign="left" mr={8}>
-        <Text fontSize="184px" color="#F47327" fontFamily="Poppins">
+        <Text fontSize="184px" color="#F47327" >
           PYGUS
         </Text>
         <Text
           fontWeight="light"
           fontSize="32px"
           color="#52525B"
-          fontFamily="Poppins"
+       
         >
           Desenvolvido para transformar a fala de crianças com transtorno dos
           sons da fala.
@@ -30,7 +30,7 @@ export const DownloadArea: React.FC = () => {
             <Image src={appleStoreSvg} mr={4} alt="Logo apple" />
             <Box>
               <Text fontSize="xs">Download na</Text>
-              <Text fontWeight="medium" fontSize="md" fontFamily="Poppins">
+              <Text fontWeight="medium" fontSize="md" >
                 App Store
               </Text>
             </Box>
@@ -45,7 +45,7 @@ export const DownloadArea: React.FC = () => {
             <Image src={googlePlaySvg} mr={4} alt="Logo android" />
             <Box>
               <Text fontSize="xs">Download na</Text>
-              <Text fontWeight="medium" fontSize="md" fontFamily="Poppins">
+              <Text fontWeight="medium" fontSize="md" >
                 Google Play
               </Text>
             </Box>
