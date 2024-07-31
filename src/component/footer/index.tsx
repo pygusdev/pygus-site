@@ -107,7 +107,7 @@ export const Footer = () => {
               <Flex justifyContent="space-between">
                 <Flex alignItems="flex-start" px={4} mt={4} flexDir="column">
                   <Text
-                    fontSize="lg"
+                    fontSize="md"
                     color="white"
                     fontWeight="500"
                     fontFamily="Poppins"
@@ -135,7 +135,7 @@ export const Footer = () => {
                 </Flex>
                 <Flex alignItems="flex-start" px={4} mt={4} flexDir="column">
                   <Text
-                    fontSize="lg"
+                    fontSize="md"
                     color="white"
                     fontWeight="500"
                     fontFamily="Poppins"

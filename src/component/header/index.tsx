@@ -14,7 +14,7 @@ import {
   Text,
 } from '@chakra-ui/react'
 import LogoImg from '../../assets/logoImg.svg'
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { Menu } from 'lucide-react'
 
 export const Header = () => {
@@ -23,6 +23,7 @@ export const Header = () => {
   const paddingVertical = useBreakpointValue({ base: 2, md: 6 })
   const isMobile = useBreakpointValue({ base: true, md: false })
   const { isOpen, onOpen, onClose } = useDisclosure()
+  const btnRef = useRef()
 
   const handleLinkClick = (
     event: React.MouseEvent<HTMLAnchorElement, MouseEvent>,
@@ -68,7 +69,13 @@ export const Header = () => {
   return (
     <>
       {isMobile && (
-        <Drawer isOpen={isOpen} placement="left" size="xs" onClose={onClose}>
+        <Drawer
+          isOpen={isOpen}
+          placement="left"
+          size="xs"
+          onClose={onClose}
+          finalFocusRef={btnRef.current}
+        >
           <DrawerOverlay />
           <DrawerContent>
             <DrawerHeader>
@@ -151,7 +158,7 @@ export const Header = () => {
 
       {isMobile && (
         <Flex alignItems="center" gap={4}>
-          <Flex mt={4} as={Button} onClick={onOpen} variant="none">
+          <Flex mt={4} as={Button} onClick={onOpen} variant="none" ref={btnRef}>
             <Menu size={24} color="#71717A" />
           </Flex>
           <ChakraLink

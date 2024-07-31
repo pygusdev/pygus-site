@@ -41,7 +41,7 @@ export const DownloadArea: React.FC = () => {
                 as="a"
                 href="https://apps.apple.com/br/app/pygus-profissional/id123456789"
                 target="_blank"
-                p={3}
+                p={5}
               >
                 <Image
                   src={appleStoreSvg}
@@ -62,7 +62,7 @@ export const DownloadArea: React.FC = () => {
                 as="a"
                 href="https://play.google.com/store/apps/details?id=com.pygus.profissional"
                 target="_blank"
-                p={3}
+                p={5}
               >
                 <Image
                   src={googlePlaySvg}
