@@ -1,7 +1,8 @@
-import { Flex, Box, Text } from '@chakra-ui/react'
+import { Flex, Box, Text, useBreakpointValue } from '@chakra-ui/react'
 import { AccordionFAQ } from '../accordionFAQ'
 
 export const FaqArea = () => {
+  const isMobile = useBreakpointValue({ base: true, md: false })
   const faqData = [
     {
       title: 'Como usuário será vinculado ao paciente?',
@@ -31,42 +32,82 @@ export const FaqArea = () => {
   ]
 
   return (
-    <Flex id="faq" alignItems="center" px={12} mt="120px">
-      <Flex flexDir="column" w="30%" justifyContent="flex-start">
-        <Text
-          fontWeight="300"
-          fontSize="3xl"
-          fontFamily="Poppins"
-          color="#52525B"
-        >
-          Tem alguma
+    <Flex
+      flexDir={isMobile ? 'column' : 'row'}
+      id="faq"
+      alignItems="center"
+      px={isMobile ? 4 : 12}
+      mt="120px"
+    >
+      {isMobile ? (
+        <Flex alignItems="center" w="100%">
           <Text
-            fontWeight="500"
-            fontSize="4xl"
-            fontFamily="Poppins"
-            color="#F47327"
-          >
-            dúvida?
-          </Text>
-          <Text
+            textAlign="center"
             fontWeight="300"
-            fontSize="3xl"
+            fontSize={'lg'}
             fontFamily="Poppins"
             color="#52525B"
           >
-            Nós
+            Tem alguma{' '}
+            <Text
+              fontWeight="500"
+              fontSize={'2xl'}
+              fontFamily="Poppins"
+              color="#F47327"
+              display="inline"
+            >
+              dúvida?
+            </Text>{' '}
+            Nós{' '}
+            <Text
+              fontWeight="500"
+              fontSize={'2xl'}
+              fontFamily="Poppins"
+              color="#F47327"
+              display="inline"
+            >
+              respondemos.
+            </Text>
           </Text>
+        </Flex>
+      ) : (
+        <Flex flexDir="column" w="30%" justifyContent="flex-start">
           <Text
-            fontWeight="500"
-            fontSize="4xl"
+            fontWeight="300"
+            fontSize={'3xl'}
             fontFamily="Poppins"
-            color="#F47327"
+            color="#52525B"
           >
-            respondemos.
+            Tem alguma
+            <Text
+              fontWeight="500"
+              fontSize={'4xl'}
+              fontFamily="Poppins"
+              color="#F47327"
+            >
+              dúvida?
+            </Text>
+            <Text
+              fontWeight="300"
+              fontSize={'3xl'}
+              fontFamily="Poppins"
+              color="#52525B"
+            >
+              Nós
+            </Text>
+            <Text
+              fontWeight="500"
+              fontSize={'4xl'}
+              fontFamily="Poppins"
+              color="#F47327"
+            >
+              respondemos.
+            </Text>
           </Text>
-        </Text>
-      </Flex>
-      <Box w="100%" gap={4}>
+        </Flex>
+      )}
+
+      <Box w="100%" gap={4} mt={isMobile ? 8 : 0}>
         {faqData.map((item, index) => (
           <Box key={index} mb={4}>
             <AccordionFAQ title={item.title} description={item.description} />

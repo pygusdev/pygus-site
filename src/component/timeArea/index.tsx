@@ -1,4 +1,4 @@
-import { Flex, Text } from '@chakra-ui/react'
+import { Flex, Text, useBreakpointValue } from '@chakra-ui/react'
 import mereImg from '../../assets/mereImg.png'
 import joaoImg from '../../assets/joaoImage.png'
 import lucianaImg from '../../assets/lucianaImg.png'
@@ -7,6 +7,7 @@ import samuelImg from '../../assets/samuelImg.png'
 import { MemberItem } from '../memberItem'
 
 export const TimeArea = () => {
+  const isMobile = useBreakpointValue({ base: true, md: false })
   const timeDate = [
     {
       name: 'Mére Lander',
@@ -42,9 +43,9 @@ export const TimeArea = () => {
 
   return (
     <Flex alignItems="center" flexDir="column">
-      <Flex mt={10} gap={1}>
+      <Flex mt={10} gap={1} alignItems="center">
         <Text
-          fontSize="3xl"
+          fontSize={isMobile ? 'lg' : '3xl'}
           fontFamily="Poppins"
           fontWeight="300"
           color="#52525B"
@@ -52,7 +53,7 @@ export const TimeArea = () => {
           Conheça nosso
         </Text>
         <Text
-          fontSize="3xl"
+          fontSize={isMobile ? '2xl' : '3xl'}
           fontFamily="Poppins"
           fontWeight="500"
           color="#F47327"

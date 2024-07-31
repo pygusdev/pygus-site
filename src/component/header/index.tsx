@@ -18,7 +18,7 @@ import { useEffect, useState } from 'react'
 import { Menu } from 'lucide-react'
 
 export const Header = () => {
-  const [activeLink, setActiveLink] = useState('#')
+  const [activeLink, setActiveLink] = useState('#home')
   const paddingHorizontal = useBreakpointValue({ base: 4, md: 20 })
   const paddingVertical = useBreakpointValue({ base: 2, md: 6 })
   const isMobile = useBreakpointValue({ base: true, md: false })
@@ -43,10 +43,10 @@ export const Header = () => {
   useEffect(() => {
     const handleScroll = () => {
       const sections = document.querySelectorAll(
-        '#precos, #app, #contato, #faq',
+        '#home, #precos, #app, #contato, #faq',
       )
 
-      let currentLink = '#'
+      let currentLink = '#home'
 
       sections.forEach((section: any) => {
         const sectionTop = section.offsetTop - 96
@@ -80,11 +80,11 @@ export const Header = () => {
             <DrawerBody>
               <Flex gap={8} mt={8} flexDir="column">
                 <ChakraLink
-                  href="#"
+                  href="#home"
                   fontSize={16}
-                  fontWeight={activeLink === '#' ? '500' : '400'}
-                  color={activeLink === '#' ? '#F47327' : '#27272A'}
-                  onClick={(event) => handleLinkClick(event, '#')}
+                  fontWeight={activeLink === '#home' ? '500' : '400'}
+                  color={activeLink === '#home' ? '#F47327' : '#27272A'}
+                  onClick={(event) => handleLinkClick(event, '#home')}
                   _hover={{ textDecoration: 'none' }}
                   fontFamily="Poppins"
                 >
@@ -114,17 +114,6 @@ export const Header = () => {
                   Preços
                 </ChakraLink>
                 <ChakraLink
-                  href="#contato"
-                  fontSize={16}
-                  fontWeight={activeLink === '#contato' ? '500' : '400'}
-                  color={activeLink === '#contato' ? '#F47327' : '#27272A'}
-                  onClick={(event) => handleLinkClick(event, '#contato')}
-                  _hover={{ textDecoration: 'none' }}
-                  fontFamily="Poppins"
-                >
-                  Contato
-                </ChakraLink>
-                <ChakraLink
                   href="#faq"
                   fontSize={16}
                   fontWeight={activeLink === '#faq' ? '500' : '400'}
@@ -134,6 +123,17 @@ export const Header = () => {
                   fontFamily="Poppins"
                 >
                   FAQ
+                </ChakraLink>
+                <ChakraLink
+                  href="#contato"
+                  fontSize={16}
+                  fontWeight={activeLink === '#contato' ? '500' : '400'}
+                  color={activeLink === '#contato' ? '#F47327' : '#27272A'}
+                  onClick={(event) => handleLinkClick(event, '#contato')}
+                  _hover={{ textDecoration: 'none' }}
+                  fontFamily="Poppins"
+                >
+                  Contato
                 </ChakraLink>
               </Flex>
             </DrawerBody>
@@ -149,40 +149,49 @@ export const Header = () => {
         </Drawer>
       )}
 
-      <Flex
-        align="center"
-        position="fixed"
-        top="0"
-        left="0"
-        right="0"
-        zIndex="1000"
-        w="100%"
-        px={paddingHorizontal}
-        py={paddingVertical}
-        style={{
-          background:
-            'linear-gradient(89.86deg, #FFFFFF 53.54%, #F0F8FD 60.58%, #DEEEFA 69.56%, #CCE5F6 81%, #C1DFF4 86.66%, #B2D8F2 99.81%)',
-        }}
-      >
+      {isMobile && (
         <Flex alignItems="center" gap={4}>
-          {isMobile && (
-            <Flex mt={4} as={Button} onClick={onOpen} variant="none">
-              <Menu size={24} color="#71717A" />
-            </Flex>
-          )}
-
-          <ChakraLink href="#" onClick={(event) => handleLinkClick(event, '#')}>
+          <Flex mt={4} as={Button} onClick={onOpen} variant="none">
+            <Menu size={24} color="#71717A" />
+          </Flex>
+          <ChakraLink
+            href="#home"
+            onClick={(event) => handleLinkClick(event, '#home')}
+          >
             <Image src={LogoImg} alt="Logo" />
           </ChakraLink>
         </Flex>
-        {!isMobile && (
+      )}
+
+      {!isMobile && (
+        <Flex
+          align="center"
+          position="fixed"
+          top="0"
+          left="0"
+          right="0"
+          zIndex="1000"
+          w="100%"
+          px={paddingHorizontal}
+          py={paddingVertical}
+          style={{
+            background:
+              'linear-gradient(89.86deg, #FFFFFF 53.54%, #F0F8FD 60.58%, #DEEEFA 69.56%, #CCE5F6 81%, #C1DFF4 86.66%, #B2D8F2 99.81%)',
+          }}
+        >
+          <ChakraLink
+            href="#home"
+            onClick={(event) => handleLinkClick(event, '#home')}
+          >
+            <Image src={LogoImg} alt="Logo" />
+          </ChakraLink>
           <Flex gap={8} ml={16}>
             <ChakraLink
-              href="#"
+              href="#home"
               fontSize="xl"
-              fontWeight={activeLink === '#' ? '500' : '400'}
-              color={activeLink === '#' ? '#F47327' : '#27272A'}
-              onClick={(event) => handleLinkClick(event, '#')}
+              fontWeight={activeLink === '#home' ? '500' : '400'}
+              color={activeLink === '#home' ? '#F47327' : '#27272A'}
+              onClick={(event) => handleLinkClick(event, '#home')}
               _hover={{ textDecoration: 'none' }}
               fontFamily="Poppins"
             >
@@ -212,17 +221,6 @@ export const Header = () => {
               Preços
             </ChakraLink>
             <ChakraLink
-              href="#contato"
-              fontSize="xl"
-              fontWeight={activeLink === '#contato' ? '500' : '400'}
-              color={activeLink === '#contato' ? '#F47327' : '#27272A'}
-              onClick={(event) => handleLinkClick(event, '#contato')}
-              _hover={{ textDecoration: 'none' }}
-              fontFamily="Poppins"
-            >
-              Contato
-            </ChakraLink>
-            <ChakraLink
               href="#faq"
               fontSize="xl"
               fontWeight={activeLink === '#faq' ? '500' : '400'}
@@ -233,9 +231,20 @@ export const Header = () => {
             >
               FAQ
             </ChakraLink>
+            <ChakraLink
+              href="#contato"
+              fontSize="xl"
+              fontWeight={activeLink === '#contato' ? '500' : '400'}
+              color={activeLink === '#contato' ? '#F47327' : '#27272A'}
+              onClick={(event) => handleLinkClick(event, '#contato')}
+              _hover={{ textDecoration: 'none' }}
+              fontFamily="Poppins"
+            >
+              Contato
+            </ChakraLink>
           </Flex>
-        )}
-      </Flex>
+        </Flex>
+      )}
     </>
   )
 }
