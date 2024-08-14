@@ -7,39 +7,19 @@ export const PlansArea = () => {
   const isMobile = useBreakpointValue({ base: true, md: false })
   const plansAreaData = [
     {
-      type: 'Básico',
-      price: 99,
+      type: 'Free',
+      price: 0.0,
       quantityUser: 5,
       isMoreRecommended: false,
       isPersonalized: false,
     },
+
     {
-      type: 'Essencial',
-      price: 152.9,
-      quantityUser: 10,
+      type: 'Básico',
+      price: 34.9,
+      quantityUser: 0,
       isMoreRecommended: true,
       isPersonalized: false,
-    },
-    {
-      type: 'Pro',
-      price: 199.9,
-      quantityUser: 15,
-      isMoreRecommended: false,
-      isPersonalized: false,
-    },
-    {
-      type: 'Premium',
-      price: 259.9,
-      quantityUser: 20,
-      isMoreRecommended: false,
-      isPersonalized: false,
-    },
-    {
-      type: 'Personalizado',
-      price: 0,
-      quantityUser: 0,
-      isMoreRecommended: false,
-      isPersonalized: true,
     },
   ]
   const whatsappNumber = '+5582988518859'

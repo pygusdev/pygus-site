@@ -5,7 +5,6 @@ import { CardPlansProps } from './types'
 export const CardPlans = ({
   typePlans,
   price,
-  quantityUser,
   titleButton,
   isMoreRecommended = false,
   isPersonalized = false,
@@ -83,21 +82,31 @@ export const CardPlans = ({
             </Text>
           </Flex>
         )}
-        {isPersonalized ? (
-          <Flex gap={3} alignItems="center" mt={8}>
-            <Image src={IconCheck} alt="Icone de check" />
-            <Text color="#52525B" fontSize="lg">
-              À sua escolha
-            </Text>
-          </Flex>
-        ) : (
-          <Flex gap={3} alignItems="center" mt={8}>
-            <Image src={IconCheck} alt="Icone de check" />
-            <Text color="#52525B" fontSize="lg">
-              {quantityUser} usuários
-            </Text>
-          </Flex>
-        )}
+
+        <Flex gap={3} alignItems="center" mt={8}>
+          <Image src={IconCheck} alt="Icone de check" />
+          <Text color="#52525B" fontSize="lg">
+            {typePlans === 'Free'
+              ? 'Acesso limitado à liberação de fonemas.'
+              : 'Acesso ilimitado à liberação de fonemas.'}
+          </Text>
+        </Flex>
+
+        <Flex gap={3} alignItems="center" mt={8}>
+          <Image src={IconCheck} alt="Icone de check" />
+          <Text color="#52525B" fontSize="lg">
+            Quantidade de pacientes ilimitada
+          </Text>
+        </Flex>
+
+        <Flex gap={3} alignItems="center" mt={8}>
+          <Image src={IconCheck} alt="Icone de check" />
+          <Text color="#52525B" fontSize="lg">
+            {typePlans === 'Free'
+              ? 'Atendimento em horário comercial'
+              : 'Atendimento personalizado'}
+          </Text>
+        </Flex>
 
         <Button
           _hover={{ bgColor: '#6BBEC3' }}
