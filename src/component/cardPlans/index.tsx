@@ -104,7 +104,7 @@ export const CardPlans = ({
           <Text color="#52525B" fontSize="lg">
             {typePlans === 'Free'
               ? 'Atendimento em horário comercial'
-              : 'Atendimento personalizado'}
+              : 'Suporte personalizado'}
           </Text>
         </Flex>
 
