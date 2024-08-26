@@ -16,7 +16,7 @@ export const PlansArea = () => {
 
     {
       type: 'Básico',
-      price: 34.9,
+      price: 39.9,
       quantityUser: 0,
       isMoreRecommended: true,
       isPersonalized: false,
