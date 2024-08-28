@@ -4,6 +4,7 @@ import joaoImg from '../../assets/joaoImage.png'
 import lucianaImg from '../../assets/lucianaImg.png'
 import thiagoImg from '../../assets/thiagoImg.png'
 import samuelImg from '../../assets/samuelImg.png'
+import catarinaImg from '../../assets/catarinaImg.png'
 import { MemberItem } from '../memberItem'
 
 export const TimeArea = () => {
@@ -38,6 +39,12 @@ export const TimeArea = () => {
       phase: 'Pygus, solução inovadoras para a fonoaudiologia.',
       post: 'Engenheiro de software',
       image: thiagoImg,
+    },
+    {
+      name: 'Ana Catarina',
+      phase: 'Tecnologia e cuidado: reinventando a fonoaudiologia.',
+      post: 'UI/UX Sênior',
+      image: catarinaImg,
     },
   ]
 
