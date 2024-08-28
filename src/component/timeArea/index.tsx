@@ -43,7 +43,7 @@ export const TimeArea = () => {
     {
       name: 'Ana Catarina',
       phase: 'Tecnologia e cuidado: reinventando a fonoaudiologia.',
-      post: 'UI/UX Sênior',
+      post: 'Senior Product Design',
       image: catarinaImg,
     },
   ]
