@@ -6,6 +6,7 @@ export const CardPlans = ({
   typePlans,
   price,
   titleButton,
+  quantityUser,
   isMoreRecommended = false,
   isPersonalized = false,
   onPressCard,
@@ -87,22 +88,22 @@ export const CardPlans = ({
           <Image src={IconCheck} alt="Icone de check" />
           <Text color="#52525B" fontSize="lg">
             {typePlans === 'Free'
-              ? 'Acesso limitado à liberação de fonemas.'
-              : 'Acesso ilimitado à liberação de fonemas.'}
+              ? `Permite o cadastro de até 2 pacientes.`
+              : `Permite o cadastro de até ${quantityUser} pacientes.`}
           </Text>
         </Flex>
 
         <Flex gap={3} alignItems="center" mt={8}>
           <Image src={IconCheck} alt="Icone de check" />
           <Text color="#52525B" fontSize="lg">
-            Quantidade de pacientes ilimitada
+            Quantidade de fonemas ilimitada
           </Text>
         </Flex>
 
         <Flex gap={3} alignItems="center" mt={8}>
           <Image src={IconCheck} alt="Icone de check" />
           <Text color="#52525B" fontSize="lg">
-            {typePlans === 'Free'
+            {typePlans === 'Free' || typePlans === 'Básico'
               ? 'Atendimento em horário comercial'
               : 'Suporte personalizado'}
           </Text>

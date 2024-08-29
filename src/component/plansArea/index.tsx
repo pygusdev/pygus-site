@@ -17,8 +17,16 @@ export const PlansArea = () => {
     {
       type: 'Básico',
       price: 39.9,
-      quantityUser: 0,
+      quantityUser: 5,
       isMoreRecommended: true,
+      isPersonalized: false,
+    },
+
+    {
+      type: 'Pro',
+      price: 89.9,
+      quantityUser: 15,
+      isMoreRecommended: false,
       isPersonalized: false,
     },
   ]
