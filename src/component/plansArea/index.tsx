@@ -18,7 +18,7 @@ export const PlansArea = () => {
       type: 'Básico',
       price: 39.99,
       quantityUser: 5,
-      isMoreRecommended: true,
+      isMoreRecommended: false,
       isPersonalized: false,
     },
 
@@ -26,7 +26,7 @@ export const PlansArea = () => {
       type: 'Pro',
       price: 89.99,
       quantityUser: 15,
-      isMoreRecommended: false,
+      isMoreRecommended: true,
       isPersonalized: false,
     },
   ]
