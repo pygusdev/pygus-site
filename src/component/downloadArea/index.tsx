@@ -39,7 +39,7 @@ export const DownloadArea: React.FC = () => {
               <Button
                 variant="outline"
                 as="a"
-                href="https://apps.apple.com/br/app/pygus-profissional/id123456789"
+                href="https://apps.apple.com/br/app/pygus-profissional/id6514278911"
                 target="_blank"
                 p={5}
               >

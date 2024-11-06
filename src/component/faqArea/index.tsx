@@ -12,7 +12,7 @@ export const FaqArea = () => {
     {
       title: 'Como posso assinar um plano?',
       description:
-        'Atualmente, nossos planos podem ser assinados entrando em contato diretamente com a equipe Pygus. Em breve, ofereceremos um processo de assinatura automatizado para sua conveniência.',
+        'Atualmente, todos os nossos planos estão disponíveis no nosso app, no entanto, qualquer dúvida, pode entrar em contato com nossa equipe.',
     },
     {
       title: 'Qual diferença entre o plano personalizado e os demais planos?',
