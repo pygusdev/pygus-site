@@ -9,7 +9,6 @@ import {
 } from '@chakra-ui/react'
 import appleStoreSvg from '../../assets/apple-logo.svg'
 import googlePlaySvg from '../../assets/playstore.svg'
-import cellPhoneImage from '../../assets/imagecelulares.svg'
 import imageCell from '../../assets/imageCell.png'
 
 export const DownloadArea: React.FC = () => {

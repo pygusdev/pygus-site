@@ -1,15 +1,13 @@
-import { Button, Flex, Image, Text } from '@chakra-ui/react'
+import { Flex, Image, Text } from '@chakra-ui/react'
 import IconCheck from '../../assets/IconCheck.svg'
 import { CardPlansProps } from './types'
 
 export const CardPlans = ({
   typePlans,
   price,
-  titleButton,
   quantityUser,
   isMoreRecommended = false,
   isPersonalized = false,
-  onPressCard,
 }: CardPlansProps) => {
   return (
     <Flex flexDir="column" alignItems="center">
@@ -109,15 +107,7 @@ export const CardPlans = ({
           </Text>
         </Flex>
 
-        {/* <Button
-          _hover={{ bgColor: '#6BBEC3' }}
-          onClick={onPressCard}
-          bgColor="#379598"
-          color="white"
-          mt={8}
-        >
-          {titleButton}
-        </Button> */}
+        
       </Flex>
     </Flex>
   )

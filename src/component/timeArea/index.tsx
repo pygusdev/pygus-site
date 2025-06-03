@@ -1,7 +1,6 @@
 import { Flex, Text, useBreakpointValue } from '@chakra-ui/react'
 import mereImg from '../../assets/mereImg.png'
 import joaoImg from '../../assets/joaoImage.png'
-import lucianaImg from '../../assets/lucianaImg.png'
 import thiagoImg from '../../assets/thiagoImg.png'
 import samuelImg from '../../assets/samuelImg.png'
 import catarinaImg from '../../assets/catarinaImg.png'

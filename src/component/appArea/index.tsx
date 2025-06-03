@@ -1,6 +1,5 @@
 import { Text, Image, Flex, useBreakpointValue } from '@chakra-ui/react'
 import backgroundApp from '../../assets/backgroundApp.svg'
-import imageApp from '../../assets/ImagemApp.png'
 import resourcesPygus from '../../assets/resourcesPygus.png'
 
 export const AppArea = () => {

@@ -30,15 +30,9 @@ export const PlansArea = () => {
       isPersonalized: false,
     },
   ]
-  const whatsappNumber = '+5582988518859'
-  const message = encodeURIComponent(
-    'Olá, estou interessado em saber mais sobre os produtos pygus!',
-  )
-  const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${message}`
 
-  const handleWhatsAppClick = () => {
-    window.open(whatsappUrl, '_blank')
-  }
+
+
   return (
     <>
       {isMobile ? (
@@ -68,9 +62,7 @@ export const PlansArea = () => {
                   typePlans={item.type}
                   price={item.price}
                   quantityUser={item.quantityUser}
-                  titleButton="Entrar em contato"
                   isMoreRecommended={item.isMoreRecommended}
-                  onPressCard={handleWhatsAppClick}
                   isPersonalized={item.isPersonalized}
                 />
               </Flex>
@@ -125,9 +117,7 @@ export const PlansArea = () => {
                   typePlans={item.type}
                   price={item.price}
                   quantityUser={item.quantityUser}
-                  titleButton="Entrar em contato"
                   isMoreRecommended={item.isMoreRecommended}
-                  onPressCard={handleWhatsAppClick}
                   isPersonalized={item.isPersonalized}
                 />
               </Flex>
