@@ -10,6 +10,7 @@ import {
 import appleStoreSvg from '../../assets/apple-logo.svg'
 import googlePlaySvg from '../../assets/playstore.svg'
 import cellPhoneImage from '../../assets/imagecelulares.svg'
+import imageCell from '../../assets/imageCell.png'
 
 export const DownloadArea: React.FC = () => {
   const isMobile = useBreakpointValue({ base: true, md: false })
@@ -28,7 +29,7 @@ export const DownloadArea: React.FC = () => {
             </Text>
             <Flex alignItems="center">
               <Image
-                src={cellPhoneImage}
+                src={imageCell}
                 alt="Imagem com 3 celulares"
                 boxSize="auto"
                 ml={8}
@@ -133,7 +134,7 @@ export const DownloadArea: React.FC = () => {
             }}
           >
             <Image
-              src={cellPhoneImage}
+              src={imageCell}
               alt="Imagem com 3 celulares"
               boxSize="auto"
               ml={8}

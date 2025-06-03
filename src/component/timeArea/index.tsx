@@ -17,12 +17,6 @@ export const TimeArea = () => {
       image: mereImg,
     },
     {
-      name: 'Luciana Melo',
-      phase: 'Nossa misão é fazer com que os paciente aprendam brincando.',
-      post: 'Sócia - Investidora',
-      image: lucianaImg,
-    },
-    {
       name: 'Samuel dos Santos',
       phase: 'Pygus é a marca da sua terapia.',
       post: 'Sócio - Vendas/Administrativo',
@@ -43,7 +37,7 @@ export const TimeArea = () => {
     {
       name: 'Ana Catarina',
       phase: 'Tecnologia e cuidado: reinventando a fonoaudiologia.',
-      post: 'Senior Product Design',
+      post: 'CDO/Senior Product Design',
       image: catarinaImg,
     },
   ]

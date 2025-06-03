@@ -6,7 +6,7 @@ import {
   Link,
   useBreakpointValue,
 } from '@chakra-ui/react'
-import preFooter from '../../assets/preFooterImg.svg'
+import preFooter from '../../assets/footerImage.png'
 import logoImg from '../../assets/logoImgWhite.svg'
 
 import instaImg from '../../assets/instagramImg.svg'
@@ -164,7 +164,7 @@ export const Footer = () => {
               <Divider colorScheme="teal" />
               <Flex mt={4}>
                 <Text color="white" fontFamily="Poppins" fontSize="xs">
-                  © 2024. LAMAR LTDA. Todos os direitos reservados.
+                  ® 2025. PYGUS LTDA. Todos os direitos reservados.
                 </Text>
               </Flex>
             </Flex>
@@ -321,7 +321,7 @@ export const Footer = () => {
               <Divider colorScheme="teal" />
               <Flex mt={4}>
                 <Text color="white" fontFamily="Poppins" fontSize="sm">
-                  © 2024. LAMAR LTDA. Todos os direitos reservados.
+                  ® 2025. PYGUS LTDA. Todos os direitos reservados.
                 </Text>
               </Flex>
             </Flex>

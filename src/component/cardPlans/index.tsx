@@ -109,7 +109,7 @@ export const CardPlans = ({
           </Text>
         </Flex>
 
-        <Button
+        {/* <Button
           _hover={{ bgColor: '#6BBEC3' }}
           onClick={onPressCard}
           bgColor="#379598"
@@ -117,7 +117,7 @@ export const CardPlans = ({
           mt={8}
         >
           {titleButton}
-        </Button>
+        </Button> */}
       </Flex>
     </Flex>
   )

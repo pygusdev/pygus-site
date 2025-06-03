@@ -1,6 +1,7 @@
 import { Text, Image, Flex, useBreakpointValue } from '@chakra-ui/react'
 import backgroundApp from '../../assets/backgroundApp.svg'
 import imageApp from '../../assets/ImagemApp.png'
+import resourcesPygus from '../../assets/resourcesPygus.png'
 
 export const AppArea = () => {
   const isMobile = useBreakpointValue({ base: true, md: false })
@@ -42,7 +43,7 @@ export const AppArea = () => {
             </Flex>
             <Flex mt={4}>
               <Image
-                src={imageApp}
+                src={resourcesPygus}
                 objectFit="contain"
                 alt="Pinguim pescando"
               />
@@ -70,8 +71,8 @@ export const AppArea = () => {
           bgSize="cover"
           mb={10}
           alignItems="flex-start"
-        >
-          <Flex width="100%" flexDir="column">
+        > 
+          <Flex width="100%" flexDir="column" position="relative">
             <Flex justifyContent="flex-end" mt={24} px={16}>
               <Text
                 fontFamily="Poppins"
@@ -94,9 +95,9 @@ export const AppArea = () => {
                 palavra.{' '}
               </Text>
             </Flex>
-            <Image src={imageApp} objectFit="contain" alt="Pinguim pescando" />
-
-            <Flex justifyContent="center" mt={24}>
+            <Image src={resourcesPygus} objectFit="contain" alt="Pinguim pescando" />
+          <Flex>
+            <Flex justifyContent="center" mt={24} position="absolute" bottom={0} left={0} right={0}>
               <iframe
                 width="910"
                 height="511"
@@ -106,6 +107,7 @@ export const AppArea = () => {
                 referrerPolicy="strict-origin-when-cross-origin"
               ></iframe>
             </Flex>
+          </Flex>
           </Flex>
         </Flex>
       )}

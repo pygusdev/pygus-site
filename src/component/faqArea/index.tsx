@@ -3,33 +3,33 @@ import { AccordionFAQ } from '../accordionFAQ'
 
 export const FaqArea = () => {
   const isMobile = useBreakpointValue({ base: true, md: false })
-  const faqData = [
-    {
-      title: 'Como usuário será vinculado ao paciente?',
-      description:
-        'No aplicativo do profissional, será gerado um código QR exclusivo que pode ser facilmente compartilhado com os clientes. Ao escanear esse código com o aplicativo do cliente, o vínculo entre o cliente e o profissional será estabelecido automaticamente, proporcionando uma conexão rápida e eficiente para acompanhamento e suporte contínuo.',
-    },
-    {
-      title: 'Como posso assinar um plano?',
-      description:
-        'Atualmente, todos os nossos planos estão disponíveis no nosso app, no entanto, qualquer dúvida, pode entrar em contato com nossa equipe.',
-    },
-    {
-      title: 'Qual diferença entre o plano personalizado e os demais planos?',
-      description:
-        'O plano personalizado permite gerenciar mais de 20 usuários.',
-    },
-    {
-      title: 'Posso usar o aplicativo com qualquer paciente?',
-      description:
-        'Sim, o aplicativo é especialmente desenvolvido para pacientes com dificuldades na fala.',
-    },
-    {
-      title: 'Como funciona o aplicativo?',
-      description:
-        'O aplicativo é simples e intuitivo. Após o vínculo entre paciente e profissional, o profissional pode avaliar o paciente, liberar fonemas para prática e acompanhar o progresso de forma eficiente.',
-    },
-  ]
+ const faqData = [
+  {
+    title: 'Como criar e vincular um paciente?',
+    description:
+      'No app do profissional, existe uma seção específica para cadastrar um paciente. Após o cadastro, o vínculo entre profissional e paciente é feito automaticamente.',
+  },
+  {
+    title: 'Como posso assinar um plano?',
+    description:
+      'Você pode assinar qualquer plano diretamente pelo nosso aplicativo. Se tiver dúvidas, entre em contato com a nossa equipe pelo whatsApp ou e-mail de suporte.',
+  },
+  {
+    title: 'Consigo cadastrar mais de 5 pacientes (Básico) ou 15 pacientes (Pro)?',
+    description:
+      'É possível criar quantos perfis de pacientes desejar, mas somente até 5 (plano Básico) ou 15 (plano Pró) poderão estar ativos simultaneamente.',
+  },
+  {
+    title: 'Posso usar o aplicativo com qualquer paciente?',
+    description:
+      'Sim. Embora o Pygus seja especialmente desenvolvido para pacientes com dificuldades na fala, você pode utilizá-lo com qualquer paciente que precise de exercícios e acompanhamento fonético.',
+  },
+  {
+    title: 'Como funciona o aplicativo?',
+    description:
+      'Após cadastrar um paciente, o profissional pode liberar fonemas para prática, e acompanhar o progresso em tempo real por fonema. Tudo de forma simples e intuitiva.',
+  },
+]
 
   return (
     <Flex
