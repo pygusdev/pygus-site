@@ -7,7 +7,7 @@ const MotionBox = motion(Box)
 export const ModernFooter = () => {
   return (
     <Box
-      background="linear-gradient(135deg, #1a1a2e 0%, #16213e 100%)"
+      background="#F47327"
       color="white"
       py={16}
     >
