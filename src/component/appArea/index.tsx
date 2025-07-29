@@ -29,26 +29,41 @@ export const AppArea = () => {
         >
           <Flex width="100%" flexDir="column">
             <Flex justifyContent="flex-end" mt={24} px={16}>
-              <Text
-                fontFamily="Poppins"
-                fontSize="sm"
-                textAlign="right"
-                maxW="1000px"
-                color="#52525B"
-                fontWeight="300"
-              >
-                O Pygus é um recurso com{' '}
+              <Box textAlign="right" maxW="1000px">
                 <Text
-                  display="inline"
+                  fontFamily="Poppins"
+                  fontSize="sm"
+                  color="#52525B"
+                  fontWeight="300"
+                  mb={2}
+                >
+                  O Pygus é um recurso com
+                </Text>
+                <Text
                   fontSize="lg"
                   color="#F47327"
                   fontWeight="500"
+                  textAlign="right"
+                  style={{
+                    background: 'linear-gradient(135deg, #F47327, #FF6B35)',
+                    backgroundClip: 'text',
+                    WebkitBackgroundClip: 'text',
+                    WebkitTextFillColor: 'transparent',
+                  }}
+                  mb={2}
                 >
                   pistas auditivas e visuais
-                </Text>{' '}
-                que propicia a percepção do fonema trabalhado na estrutura da
-                palavra.{' '}
-              </Text>
+                </Text>
+                <Text
+                  fontFamily="Poppins"
+                  fontSize="sm"
+                  color="#52525B"
+                  fontWeight="300"
+                  textAlign="right"
+                >
+                  que propicia a percepção do fonema trabalhado na estrutura da palavra.
+                </Text>
+              </Box>
             </Flex>
             <Flex mt={4}>
               <Image

@@ -1,14 +1,25 @@
-import { useEffect, useState, useCallback } from 'react'
+import { useEffect, useState, useCallback, useRef } from 'react'
+import { useInView as useInViewLib } from 'react-intersection-observer'
 
 export const useParallax = (speed: number = 0.5) => {
   const [offset, setOffset] = useState(0)
 
   useEffect(() => {
+    if (typeof window === 'undefined') return
+
+    let ticking = false
+
     const handleScroll = () => {
-      setOffset(window.pageYOffset * speed)
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          setOffset(window.pageYOffset * speed)
+          ticking = false
+        })
+        ticking = true
+      }
     }
 
-    window.addEventListener('scroll', handleScroll)
+    window.addEventListener('scroll', handleScroll, { passive: true })
     return () => window.removeEventListener('scroll', handleScroll)
   }, [speed])
 
@@ -19,11 +30,21 @@ export const useScrollAnimation = () => {
   const [scrollY, setScrollY] = useState(0)
 
   useEffect(() => {
+    if (typeof window === 'undefined') return
+
+    let ticking = false
+
     const handleScroll = () => {
-      setScrollY(window.scrollY)
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          setScrollY(window.scrollY)
+          ticking = false
+        })
+        ticking = true
+      }
     }
 
-    window.addEventListener('scroll', handleScroll)
+    window.addEventListener('scroll', handleScroll, { passive: true })
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
@@ -31,44 +52,11 @@ export const useScrollAnimation = () => {
 }
 
 export const useInView = (threshold: number = 0.1) => {
-  const [isInView, setIsInView] = useState(false)
-  const [element, setElement] = useState<HTMLElement | null>(null)
+  const { ref, inView } = useInViewLib({
+    threshold,
+    triggerOnce: true,
+    rootMargin: '50px'
+  })
 
-  useEffect(() => {
-    if (!element || typeof window === 'undefined') return
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry) {
-          setIsInView(entry.isIntersecting)
-        }
-      },
-      { threshold }
-    )
-
-    try {
-      observer.observe(element)
-    } catch (error) {
-      console.warn('Error observing element:', error)
-    }
-
-    return () => {
-      try {
-        if (element) {
-          observer.unobserve(element)
-        }
-        observer.disconnect()
-      } catch (error) {
-        console.warn('Error cleaning up observer:', error)
-      }
-    }
-  }, [element, threshold])
-
-  const setRef = useCallback((node: HTMLElement | null) => {
-    if (node !== element) {
-      setElement(node)
-    }
-  }, [element])
-
-  return [setRef, isInView] as const
+  return [ref, inView] as const
 }

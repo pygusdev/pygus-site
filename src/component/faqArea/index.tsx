@@ -90,34 +90,50 @@ export const FaqArea = () => {
         }}
       />
       {isMobile ? (
-        <Flex alignItems="center" w="100%">
+        <Flex alignItems="center" w="100%" flexDir="column" textAlign="center">
           <Text
-            textAlign="center"
             fontWeight="300"
             fontSize={'lg'}
             fontFamily="Poppins"
             color="#52525B"
           >
-            Tem alguma{' '}
-            <Text
-              fontWeight="500"
-              fontSize={'2xl'}
-              fontFamily="Poppins"
-              color="#F47327"
-              display="inline"
-            >
-              dúvida?
-            </Text>{' '}
-            Nós{' '}
-            <Text
-              fontWeight="500"
-              fontSize={'2xl'}
-              fontFamily="Poppins"
-              color="#F47327"
-              display="inline"
-            >
-              respondemos.
-            </Text>
+            Tem alguma
+          </Text>
+          <Text
+            fontWeight="500"
+            fontSize={'2xl'}
+            fontFamily="Poppins"
+            color="#F47327"
+            style={{
+              background: 'linear-gradient(135deg, #F47327, #FF6B35)',
+              backgroundClip: 'text',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+            }}
+          >
+            dúvida?
+          </Text>
+          <Text
+            fontWeight="300"
+            fontSize={'lg'}
+            fontFamily="Poppins"
+            color="#52525B"
+          >
+            Nós
+          </Text>
+          <Text
+            fontWeight="500"
+            fontSize={'2xl'}
+            fontFamily="Poppins"
+            color="#F47327"
+            style={{
+              background: 'linear-gradient(135deg, #F47327, #FF6B35)',
+              backgroundClip: 'text',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+            }}
+          >
+            respondemos.
           </Text>
         </Flex>
       ) : (

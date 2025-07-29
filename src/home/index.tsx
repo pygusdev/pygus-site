@@ -31,9 +31,9 @@ export const Home = () => {
 
   return (
     <>
-      <LoadingScreen isLoading={isLoading} onComplete={handleLoadingComplete} />
+      {/* <LoadingScreen isLoading={isLoading} onComplete={handleLoadingComplete} /> */}
       <AnimatedBackground />
-      {!isMobile && <CustomCursor />}
+      {/* {!isMobile && <CustomCursor />} */}
       {isMobile ? (
         <Box
           style={{
