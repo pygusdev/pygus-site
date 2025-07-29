@@ -3,11 +3,8 @@ import { motion } from 'framer-motion'
 import { CardPlans } from '../cardPlans'
 import Lottie from 'react-lottie-player'
 import lottieJson from '../../assets/snow.json'
-import { useInView } from '../../hooks/useParallax'
-
 export const PlansArea = () => {
   const isMobile = useBreakpointValue({ base: true, md: false })
-  const [ref, isInView] = useInView(0.2)
   
   const MotionFlex = motion(Flex)
   const MotionText = motion(Text)
@@ -92,7 +89,6 @@ export const PlansArea = () => {
           flexDir="column" 
           position="relative" 
           py={20}
-          ref={ref}
         >
           <Lottie
             animationData={lottieJson}
@@ -153,7 +149,7 @@ export const PlansArea = () => {
             gap={2} 
             alignItems="center"
             initial={{ opacity: 0, y: -50 }}
-            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: -50 }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1 }}
           >
             <MotionText
@@ -186,27 +182,23 @@ export const PlansArea = () => {
             justifyContent="center" 
             mt={20}
             initial={{ opacity: 0 }}
-            animate={isInView ? { opacity: 1 } : { opacity: 0 }}
+            animate={{ opacity: 1 }}
             transition={{ duration: 1, delay: 0.3 }}
           >
             {plansAreaData.map((item, index) => (
               <MotionBox
                 key={index}
-                initial={{ opacity: 0, y: 50, scale: 0.9 }}
-                animate={isInView ? { 
-                  opacity: 1, 
-                  y: 0, 
-                  scale: 1 
-                } : { 
-                  opacity: 0, 
-                  y: 50, 
-                  scale: 0.9 
-                }}
-                transition={{ 
-                  duration: 0.8, 
-                  delay: 0.5 + (index * 0.2),
-                  ease: "easeOut"
-                }}
+                                 initial={{ opacity: 0, y: 50, scale: 0.9 }}
+                 animate={{ 
+                   opacity: 1, 
+                   y: 0, 
+                   scale: 1 
+                 }}
+                 transition={{ 
+                   duration: 0.8, 
+                   delay: 0.5 + (index * 0.2),
+                   ease: "easeOut"
+                 }}
                 whileHover={{ 
                   y: -10,
                   transition: { duration: 0.3 }
@@ -230,7 +222,7 @@ export const PlansArea = () => {
             fontFamily="Poppins"
             color="#52525B"
             initial={{ opacity: 0 }}
-            animate={isInView ? { opacity: 1 } : { opacity: 0 }}
+            animate={{ opacity: 1 }}
             transition={{ duration: 1, delay: 1.2 }}
           >
             <Text>*Atendimento comercial das 08h às 18 horas.</Text>

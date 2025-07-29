@@ -1,15 +1,8 @@
 import { Flex, Box, Text, useBreakpointValue } from '@chakra-ui/react'
-import { motion } from 'framer-motion'
 import { AccordionFAQ } from '../accordionFAQ'
-import { useInView } from '../../hooks/useParallax'
 
 export const FaqArea = () => {
   const isMobile = useBreakpointValue({ base: true, md: false })
-  const [ref, isInView] = useInView(0.2)
-  
-  const MotionFlex = motion(Flex)
-  const MotionBox = motion(Box)
-  const MotionText = motion(Text)
 
  const faqData = [
   {
@@ -40,55 +33,13 @@ export const FaqArea = () => {
 ]
 
   return (
-    <MotionFlex
+    <Flex
       flexDir={isMobile ? 'column' : 'row'}
       id="faq"
       alignItems="center"
       px={isMobile ? 4 : 12}
       mt="120px"
-      ref={ref}
-      position="relative"
     >
-      {/* Background decorative elements */}
-      <MotionBox
-        position="absolute"
-        top="20%"
-        left="5%"
-        width="120px"
-        height="120px"
-        borderRadius="50%"
-        background="linear-gradient(135deg, #AFD6F1, #CCE5F6)"
-        opacity={0.2}
-        animate={{
-          y: [0, -25, 0],
-          scale: [1, 1.1, 1],
-        }}
-        transition={{
-          duration: 8,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
-      />
-      
-      <MotionBox
-        position="absolute"
-        bottom="10%"
-        right="10%"
-        width="80px"
-        height="80px"
-        borderRadius="20px"
-        background="linear-gradient(45deg, #F47327, #FFB366)"
-        opacity={0.15}
-        animate={{
-          rotate: [0, 180, 360],
-          scale: [1, 0.8, 1],
-        }}
-        transition={{
-          duration: 10,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
-      />
       {isMobile ? (
         <Flex alignItems="center" w="100%" flexDir="column" textAlign="center">
           <Text
@@ -137,16 +88,13 @@ export const FaqArea = () => {
           </Text>
         </Flex>
       ) : (
-        <MotionFlex 
+        <Flex 
           flexDir="column" 
           w="30%" 
           justifyContent="flex-start"
-          initial={{ opacity: 0, x: -100 }}
-          animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -100 }}
-          transition={{ duration: 1, delay: 0.2 }}
         >
-          <MotionBox>
-            <MotionText
+          <Box>
+            <Text
               fontWeight="300"
               fontSize={'3xl'}
               fontFamily="Poppins"
@@ -154,23 +102,17 @@ export const FaqArea = () => {
               lineHeight="1.2"
             >
               Tem alguma
-            </MotionText>
-            <MotionText
+            </Text>
+            <Text
               fontWeight="500"
               fontSize={'4xl'}
               fontFamily="Poppins"
               color="#F47327"
               display="block"
-              style={{
-                background: 'linear-gradient(135deg, #F47327, #FF6B35)',
-                backgroundClip: 'text',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-              }}
             >
               dúvida?
-            </MotionText>
-            <MotionText
+            </Text>
+            <Text
               fontWeight="300"
               fontSize={'3xl'}
               fontFamily="Poppins"
@@ -178,51 +120,34 @@ export const FaqArea = () => {
               display="block"
             >
               Nós
-            </MotionText>
-            <MotionText
+            </Text>
+            <Text
               fontWeight="500"
               fontSize={'4xl'}
               fontFamily="Poppins"
               color="#F47327"
               display="block"
-              style={{
-                background: 'linear-gradient(135deg, #F47327, #FF6B35)',
-                backgroundClip: 'text',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-              }}
             >
               respondemos.
-            </MotionText>
-          </MotionBox>
-        </MotionFlex>
+            </Text>
+          </Box>
+        </Flex>
       )}
 
-      <MotionBox 
+      <Box 
         w="100%" 
         gap={4} 
         mt={isMobile ? 8 : 0}
-        initial={{ opacity: 0, x: 100 }}
-        animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 100 }}
-        transition={{ duration: 1, delay: 0.4 }}
       >
         {faqData.map((item, index) => (
-          <MotionBox 
+          <Box 
             key={index} 
             mb={4}
-            initial={{ opacity: 0, y: 30 }}
-            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-            transition={{ 
-              duration: 0.6, 
-              delay: 0.6 + (index * 0.1),
-              ease: "easeOut"
-            }}
-            whileHover={{ scale: 1.02 }}
           >
             <AccordionFAQ title={item.title} description={item.description} />
-          </MotionBox>
+          </Box>
         ))}
-      </MotionBox>
-    </MotionFlex>
+      </Box>
+    </Flex>
   )
 }

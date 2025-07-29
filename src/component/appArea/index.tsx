@@ -2,12 +2,11 @@ import { Text, Image, Flex, useBreakpointValue, Box } from '@chakra-ui/react'
 import { motion } from 'framer-motion'
 import backgroundApp from '../../assets/backgroundApp.svg'
 import resourcesPygus from '../../assets/resourcesPygus.png'
-import { useParallax, useInView } from '../../hooks/useParallax'
+import { useParallax } from '../../hooks/useParallax'
 
 export const AppArea = () => {
   const isMobile = useBreakpointValue({ base: true, md: false })
   const parallaxOffset = useParallax(0.2)
-  const [ref, isInView] = useInView(0.3)
   
   const MotionFlex = motion(Flex)
   const MotionText = motion(Text)
@@ -95,7 +94,6 @@ export const AppArea = () => {
           bgSize="cover"
           mb={10}
           alignItems="flex-start"
-          ref={ref}
           position="relative"
           style={{
             backgroundPosition: `center ${parallaxOffset * 0.5}px`,
@@ -149,7 +147,7 @@ export const AppArea = () => {
               mt={24} 
               px={16}
               initial={{ opacity: 0, x: 100 }}
-              animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 100 }}
+              animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 1, delay: 0.2 }}
             >
               <MotionBox>
@@ -172,9 +170,9 @@ export const AppArea = () => {
                   fontWeight="500"
                   textAlign="right"
                   maxW="1000px"
-                  initial={{ opacity: 0 }}
-                  animate={isInView ? { opacity: 1 } : { opacity: 0 }}
-                  transition={{ duration: 1, delay: 0.8 }}
+                                     initial={{ opacity: 0 }}
+                   animate={{ opacity: 1 }}
+                   transition={{ duration: 1, delay: 0.8 }}
                   style={{
                     background: 'linear-gradient(135deg, #F47327, #FF6B35)',
                     backgroundClip: 'text',
@@ -204,7 +202,7 @@ export const AppArea = () => {
               objectFit="contain" 
               alt="Pinguim pescando"
               initial={{ opacity: 0, scale: 0.8 }}
-              animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 1.2, delay: 0.4 }}
               whileHover={{ scale: 1.02 }}
               style={{
@@ -221,7 +219,7 @@ export const AppArea = () => {
               left={0} 
               right={0}
               initial={{ opacity: 0, y: 50 }}
-              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+              animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, delay: 1 }}
             >
               <MotionBox

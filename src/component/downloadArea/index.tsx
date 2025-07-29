@@ -11,12 +11,11 @@ import { motion } from 'framer-motion'
 import appleStoreSvg from '../../assets/apple-logo.svg'
 import googlePlaySvg from '../../assets/playstore.svg'
 import imageCell from '../../assets/imageCell.png'
-import { useParallax, useInView } from '../../hooks/useParallax'
+import { useParallax } from '../../hooks/useParallax'
 
 export const DownloadArea: React.FC = () => {
   const isMobile = useBreakpointValue({ base: true, md: false })
   const parallaxOffset = useParallax(0.3)
-  const [ref, isInView] = useInView(0.2)
 
   const MotionBox = motion(Box)
   const MotionText = motion(Text)
@@ -97,7 +96,6 @@ export const DownloadArea: React.FC = () => {
           pt={20} 
           w="100%" 
           justifyContent="space-between"
-          ref={ref}
           position="relative"
           overflow="hidden"
         >
@@ -148,7 +146,7 @@ export const DownloadArea: React.FC = () => {
               fontSize="184px" 
               color="#F47327"
               initial={{ opacity: 0, y: 100 }}
-              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 100 }}
+              animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, delay: 0.2 }}
               style={{
                 background: 'linear-gradient(135deg, #F47327, #FF6B35, #F47327)',
@@ -164,9 +162,9 @@ export const DownloadArea: React.FC = () => {
               fontWeight="light" 
               fontSize="32px" 
               color="#52525B"
-              initial={{ opacity: 0, y: 50 }}
-              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
-              transition={{ duration: 1, delay: 0.5 }}
+                             initial={{ opacity: 0, y: 50 }}
+               animate={{ opacity: 1, y: 0 }}
+               transition={{ duration: 1, delay: 0.5 }}
               maxW="600px"
               lineHeight="1.4"
             >
@@ -179,9 +177,9 @@ export const DownloadArea: React.FC = () => {
               align="center" 
               mt={14}
               as={motion.div}
-              initial={{ opacity: 0, y: 30 }}
-              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-              transition={{ duration: 1, delay: 0.8 }}
+                             initial={{ opacity: 0, y: 30 }}
+               animate={{ opacity: 1, y: 0 }}
+               transition={{ duration: 1, delay: 0.8 }}
             >
               <MotionButton
                 variant="outline"
@@ -257,7 +255,7 @@ export const DownloadArea: React.FC = () => {
               ml={8}
               pr={20}
               initial={{ opacity: 0, x: 100 }}
-              animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 100 }}
+              animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 1.2, delay: 0.3 }}
               whileHover={{ scale: 1.02 }}
             />
