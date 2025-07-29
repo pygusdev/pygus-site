@@ -1,6 +1,6 @@
 import { Box, Text, Button, Flex, Container, VStack, HStack, Image, Grid, GridItem } from '@chakra-ui/react'
 import { motion } from 'framer-motion'
-import { ChevronDown, Download, Play, Sparkles, Star, Users, Award, Zap, Heart, Shield, Smartphone } from 'lucide-react'
+import { ChevronDown, Download, Play, Sparkles, Star, Users, Award, Zap, Heart, Shield } from 'lucide-react'
 import LogoImg from '../../assets/logoImg.svg'
 import imageCell from '../../assets/imageCell.png'
 
@@ -25,8 +25,8 @@ export const HeroSection = () => {
         right="5%"
         width="500px"
         height="500px"
-        borderRadius="50%"
-        background="radial-gradient(circle, rgba(244,115,39,0.15), rgba(244,115,39,0.02))"
+        borderRadius="40px"
+        background="linear-gradient(135deg, rgba(244,115,39,0.15), rgba(244,115,39,0.02))"
         animate={{
           y: [0, -40, 0],
           scale: [1, 1.2, 1],
@@ -87,7 +87,7 @@ export const HeroSection = () => {
         width="80px"
         height="80px"
         background="linear-gradient(45deg, #AFD6F1, #CCE5F6)"
-        borderRadius="50%"
+        borderRadius="15px"
         opacity={0.2}
         animate={{
           y: [0, -50, 0],
@@ -151,15 +151,15 @@ export const HeroSection = () => {
         </MotionBox>
       ))}
 
-      {/* Animated Gradient Orbs */}
+      {/* Animated Gradient Squares */}
       <MotionBox
         position="absolute"
         top="60%"
         right="20%"
         width="120px"
         height="120px"
-        borderRadius="50%"
-        background="radial-gradient(circle, rgba(244,115,39,0.2), rgba(244,115,39,0.05))"
+        borderRadius="25px"
+        background="linear-gradient(135deg, rgba(244,115,39,0.2), rgba(244,115,39,0.05))"
         filter="blur(20px)"
         animate={{
           scale: [1, 1.5, 1],
@@ -178,8 +178,8 @@ export const HeroSection = () => {
         left="15%"
         width="80px"
         height="80px"
-        borderRadius="50%"
-        background="radial-gradient(circle, rgba(175,214,241,0.3), rgba(175,214,241,0.1))"
+        borderRadius="20px"
+        background="linear-gradient(135deg, rgba(175,214,241,0.3), rgba(175,214,241,0.1))"
         filter="blur(15px)"
         animate={{
           y: [0, -40, 0],
@@ -255,7 +255,7 @@ export const HeroSection = () => {
                 borderRadius="full"
                 fontWeight="600"
                 boxShadow="0 10px 40px rgba(244,115,39,0.3)"
-                leftIcon={<Smartphone size={20} />}
+                leftIcon={<Download size={20} />}
                 whileHover={{ 
                   scale: 1.05,
                   boxShadow: "0 15px 50px rgba(244,115,39,0.4)",
@@ -264,7 +264,7 @@ export const HeroSection = () => {
                 whileTap={{ scale: 0.98 }}
                 _hover={{ bg: "#E85D00" }}
               >
-                App Store
+                Baixar App
               </MotionButton>
 
               <MotionButton
@@ -277,7 +277,7 @@ export const HeroSection = () => {
                 borderRadius="full"
                 fontWeight="600"
                 borderWidth="2px"
-                leftIcon={<Smartphone size={20} />}
+                leftIcon={<Play size={20} />}
                 whileHover={{ 
                   scale: 1.05,
                   bg: "rgba(244,115,39,0.1)"
@@ -285,7 +285,7 @@ export const HeroSection = () => {
                 whileTap={{ scale: 0.98 }}
                 _hover={{ bg: "rgba(244,115,39,0.1)" }}
               >
-                Google Play
+                Ver Demonstração
               </MotionButton>
             </HStack>
 
@@ -368,7 +368,7 @@ export const HeroSection = () => {
                   <Box
                     w="12px"
                     h="12px"
-                    borderRadius="50%"
+                    borderRadius="3px"
                     bg={i % 2 === 0 ? "#F47327" : "#AFD6F1"}
                     opacity={0.6}
                   />
