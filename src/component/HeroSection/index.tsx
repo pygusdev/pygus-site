@@ -194,7 +194,7 @@ export const HeroSection = () => {
       />
 
       {/* Main Content */}
-      <Container maxW="1400px" h="100vh">
+      <Container maxW="1400px" h="100vh" pt="80px">
         <Grid templateColumns={{ base: "1fr", lg: "1fr 1fr" }} gap={12} h="100%" alignItems="center">
           
           {/* Left Content */}

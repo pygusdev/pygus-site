@@ -1,272 +1,196 @@
-import {
-  Flex,
-  Image,
-  Link as ChakraLink,
+import { 
+  Box, 
+  Flex, 
+  Image, 
+  Link as ChakraLink, 
+  Text,
   useBreakpointValue,
+  IconButton,
   Drawer,
+  DrawerBody,
+  DrawerHeader,
   DrawerOverlay,
   DrawerContent,
-  DrawerHeader,
-  DrawerBody,
-  DrawerFooter,
-  Button,
+  DrawerCloseButton,
   useDisclosure,
-  Text,
+  VStack
 } from '@chakra-ui/react'
 import { motion } from 'framer-motion'
+import { useState, useEffect } from 'react'
+import { Menu, X } from 'lucide-react'
 import LogoImg from '../../assets/logoImg.svg'
-import { useEffect, useRef, useState } from 'react'
-import { Menu } from 'lucide-react'
+
+const MotionFlex = motion(Flex)
 
 export const Header = () => {
-  const [activeLink, setActiveLink] = useState('#home')
   const [scrolled, setScrolled] = useState(false)
-  const paddingHorizontal = useBreakpointValue({ base: 4, md: 20 })
-  const paddingVertical = useBreakpointValue({ base: 2, md: 6 })
+  const [activeLink, setActiveLink] = useState('#home')
   const isMobile = useBreakpointValue({ base: true, md: false })
   const { isOpen, onOpen, onClose } = useDisclosure()
-  const btnRef = useRef()
-  
-  const MotionFlex = motion(Flex)
 
-  const handleLinkClick = (
-    event: React.MouseEvent<HTMLAnchorElement, MouseEvent>,
-    path: string,
-  ) => {
-    event.preventDefault()
-    setActiveLink(path)
-    onClose()
-    if (path.startsWith('#')) {
-      const element = document.getElementById(path.substring(1))
-      if (element) {
-        element.scrollIntoView({ behavior: 'smooth' })
-      }
-    } else {
-      window.history.pushState({}, '', path)
-    }
-  }
   useEffect(() => {
     const handleScroll = () => {
-      const sections = document.querySelectorAll(
-        '#home, #precos, #app, #contato, #faq',
-      )
-
-      let currentLink = '#home'
-      
-      // Check if scrolled for header blur effect
-      setScrolled(window.scrollY > 50)
-
-      sections.forEach((section: any) => {
-        const sectionTop = section.offsetTop - 96
-        const sectionHeight = section.offsetHeight
-        const sectionBottom = sectionTop + sectionHeight
-
-        if (window.scrollY >= sectionTop && window.scrollY < sectionBottom) {
-          currentLink = `#${section.id}`
-        }
-      })
-
-      setActiveLink(currentLink)
+      const isScrolled = window.scrollY > 50
+      setScrolled(isScrolled)
     }
 
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
+  const handleLinkClick = (event: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    event.preventDefault()
+    setActiveLink(href)
+    
+    const element = document.querySelector(href)
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' })
+    }
+    
+    if (isMobile) {
+      onClose()
+    }
+  }
+
+  const navItems = [
+    { href: '#home', label: 'Início' },
+    { href: '#app', label: 'O App' },
+    { href: '#precos', label: 'Preços' },
+    { href: '#faq', label: 'FAQ' },
+    { href: '#contato', label: 'Contato' }
+  ]
+
   return (
     <>
-      {isMobile && (
-        <Drawer
-          isOpen={isOpen}
-          placement="left"
-          size="xs"
-          onClose={onClose}
-          finalFocusRef={btnRef.current}
+      <MotionFlex
+        as="header"
+        position="fixed"
+        top={0}
+        left={0}
+        right={0}
+        zIndex={1000}
+        align="center"
+        justify="space-between"
+        px={{ base: 4, md: 8 }}
+        py={4}
+        transition="all 0.3s ease-in-out"
+        animate={{
+          backgroundColor: scrolled 
+            ? 'rgba(255, 255, 255, 0.8)' 
+            : 'rgba(255, 255, 255, 0)',
+          backdropFilter: scrolled ? 'blur(12px)' : 'blur(0px)',
+          borderBottom: scrolled 
+            ? '1px solid rgba(244, 115, 39, 0.1)' 
+            : '1px solid transparent',
+          boxShadow: scrolled 
+            ? '0 4px 20px rgba(0, 0, 0, 0.08)' 
+            : '0 0 0 rgba(0, 0, 0, 0)'
+        }}
+      >
+        {/* Logo */}
+        <ChakraLink
+          href="#home"
+          onClick={(event) => handleLinkClick(event, '#home')}
+          _hover={{ transform: 'scale(1.05)' }}
+          transition="transform 0.2s ease"
         >
-          <DrawerOverlay />
-          <DrawerContent>
-            <DrawerHeader>
-              <Flex justifyContent="center" mt={4}>
-                <Image src={LogoImg} alt="Logo" w={16} h={8} />
-              </Flex>
-            </DrawerHeader>
+          <Image 
+            src={LogoImg} 
+            alt="Pygus Logo" 
+            h={{ base: 8, md: 10 }}
+            filter={scrolled ? 'none' : 'drop-shadow(0 2px 8px rgba(255,255,255,0.3))'}
+            transition="filter 0.3s ease"
+          />
+        </ChakraLink>
 
-            <DrawerBody>
-              <Flex gap={8} mt={8} flexDir="column">
-                <ChakraLink
-                  href="#home"
-                  fontSize={16}
-                  fontWeight={activeLink === '#home' ? '500' : '400'}
-                  color={activeLink === '#home' ? '#F47327' : '#27272A'}
-                  onClick={(event) => handleLinkClick(event, '#home')}
-                  _hover={{ textDecoration: 'none' }}
-                  fontFamily="Poppins"
-                >
-                  Início
-                </ChakraLink>
-
-                <ChakraLink
-                  href="#app"
-                  fontSize={16}
-                  fontWeight={activeLink === '#app' ? '500' : '400'}
-                  color={activeLink === '#app' ? '#F47327' : '#27272A'}
-                  onClick={(event) => handleLinkClick(event, '#app')}
-                  _hover={{ textDecoration: 'none' }}
-                  fontFamily="Poppins"
-                >
-                  App
-                </ChakraLink>
-                <ChakraLink
-                  href="#precos"
-                  fontSize={16}
-                  fontWeight={activeLink === '#precos' ? '500' : '400'}
-                  color={activeLink === '#precos' ? '#F47327' : '#27272A'}
-                  onClick={(event) => handleLinkClick(event, '#precos')}
-                  _hover={{ textDecoration: 'none' }}
-                  fontFamily="Poppins"
-                >
-                  Preços
-                </ChakraLink>
-                <ChakraLink
-                  href="#faq"
-                  fontSize={16}
-                  fontWeight={activeLink === '#faq' ? '500' : '400'}
-                  color={activeLink === '#faq' ? '#F47327' : '#27272A'}
-                  onClick={(event) => handleLinkClick(event, '#faq')}
-                  _hover={{ textDecoration: 'none' }}
-                  fontFamily="Poppins"
-                >
-                  FAQ
-                </ChakraLink>
-                <ChakraLink
-                  href="#contato"
-                  fontSize={16}
-                  fontWeight={activeLink === '#contato' ? '500' : '400'}
-                  color={activeLink === '#contato' ? '#F47327' : '#27272A'}
-                  onClick={(event) => handleLinkClick(event, '#contato')}
-                  _hover={{ textDecoration: 'none' }}
-                  fontFamily="Poppins"
-                >
-                  Contato
-                </ChakraLink>
-              </Flex>
-            </DrawerBody>
-
-            <DrawerFooter w="100%" justifyContent="center">
-              <Flex as={Button} variant="none" onClick={onClose}>
-                <Text color="#379598" fontSize="md">
-                  Esconder menu
-                </Text>
-              </Flex>
-            </DrawerFooter>
-          </DrawerContent>
-        </Drawer>
-      )}
-
-      {isMobile && (
-        <Flex alignItems="center" gap={4}>
-          <Flex mt={4} as={Button} onClick={onOpen} variant="none" ref={btnRef}>
-            <Menu size={24} color="#71717A" />
+        {/* Desktop Navigation */}
+        {!isMobile && (
+          <Flex gap={8} align="center">
+            {navItems.map((item) => (
+              <ChakraLink
+                key={item.href}
+                href={item.href}
+                onClick={(event) => handleLinkClick(event, item.href)}
+                fontSize="sm"
+                fontWeight={activeLink === item.href ? '600' : '500'}
+                color={activeLink === item.href ? '#F47327' : scrolled ? '#27272A' : '#FFFFFF'}
+                _hover={{ 
+                  color: '#F47327',
+                  textDecoration: 'none',
+                  transform: 'translateY(-1px)'
+                }}
+                transition="all 0.2s ease"
+                position="relative"
+                fontFamily="Poppins"
+                textShadow={!scrolled ? '0 1px 2px rgba(0,0,0,0.1)' : 'none'}
+                _after={{
+                  content: '""',
+                  position: 'absolute',
+                  bottom: '-4px',
+                  left: 0,
+                  right: 0,
+                  height: '2px',
+                  background: '#F47327',
+                  transform: activeLink === item.href ? 'scaleX(1)' : 'scaleX(0)',
+                  transition: 'transform 0.2s ease',
+                  transformOrigin: 'center'
+                }}
+              >
+                {item.label}
+              </ChakraLink>
+            ))}
           </Flex>
-          <ChakraLink
-            href="#home"
-            onClick={(event) => handleLinkClick(event, '#home')}
-          >
-            <Image src={LogoImg} alt="Logo" h={10} />
-          </ChakraLink>
-        </Flex>
-      )}
+        )}
 
-      {!isMobile && (
-        <MotionFlex
-          align="center"
-          position="fixed"
-          top="0"
-          left="0"
-          right="0"
-          zIndex="1000"
-          w="100%"
-          px={paddingHorizontal}
-          py={paddingVertical}
-          initial={{ y: -100 }}
-          animate={{ y: 0 }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
-          style={{
-            background: scrolled 
-              ? 'rgba(255, 255, 255, 0.95)'
-              : 'linear-gradient(89.86deg, #FFFFFF 53.54%, #F0F8FD 60.58%, #DEEEFA 69.56%, #CCE5F6 81%, #C1DFF4 86.66%, #B2D8F2 99.81%)',
-            backdropFilter: scrolled ? 'blur(20px)' : 'none',
-            borderBottom: scrolled ? '1px solid rgba(0, 0, 0, 0.1)' : 'none',
-            boxShadow: scrolled ? '0 4px 20px rgba(0, 0, 0, 0.1)' : 'none',
-            transition: 'all 0.3s ease-in-out',
-          }}
-        >
-          <ChakraLink
-            href="#home"
-            onClick={(event) => handleLinkClick(event, '#home')}
-          >
-            <Image src={LogoImg} alt="Logo" h={12} />
-          </ChakraLink>
-          <Flex gap={8} ml={16}>
-            <ChakraLink
-              href="#home"
-              fontSize="xl"
-              fontWeight={activeLink === '#home' ? '500' : '400'}
-              color={activeLink === '#home' ? '#F47327' : '#27272A'}
-              onClick={(event) => handleLinkClick(event, '#home')}
-              _hover={{ textDecoration: 'none' }}
-              fontFamily="Poppins"
-            >
-              Início
-            </ChakraLink>
+        {/* Mobile Menu Button */}
+        {isMobile && (
+          <IconButton
+            aria-label="Menu"
+            icon={<Menu size={20} />}
+            variant="ghost"
+            color={scrolled ? '#27272A' : '#FFFFFF'}
+            _hover={{ bg: 'rgba(244, 115, 39, 0.1)' }}
+            onClick={onOpen}
+          />
+        )}
+      </MotionFlex>
 
-            <ChakraLink
-              href="#app"
-              fontSize="xl"
-              fontWeight={activeLink === '#app' ? '500' : '400'}
-              color={activeLink === '#app' ? '#F47327' : '#27272A'}
-              onClick={(event) => handleLinkClick(event, '#app')}
-              _hover={{ textDecoration: 'none' }}
-              fontFamily="Poppins"
-            >
-              App
-            </ChakraLink>
-            <ChakraLink
-              href="#precos"
-              fontSize="xl"
-              fontWeight={activeLink === '#precos' ? '500' : '400'}
-              color={activeLink === '#precos' ? '#F47327' : '#27272A'}
-              onClick={(event) => handleLinkClick(event, '#precos')}
-              _hover={{ textDecoration: 'none' }}
-              fontFamily="Poppins"
-            >
-              Preços
-            </ChakraLink>
-            <ChakraLink
-              href="#faq"
-              fontSize="xl"
-              fontWeight={activeLink === '#faq' ? '500' : '400'}
-              color={activeLink === '#faq' ? '#F47327' : '#27272A'}
-              onClick={(event) => handleLinkClick(event, '#faq')}
-              _hover={{ textDecoration: 'none' }}
-              fontFamily="Poppins"
-            >
-              FAQ
-            </ChakraLink>
-            <ChakraLink
-              href="#contato"
-              fontSize="xl"
-              fontWeight={activeLink === '#contato' ? '500' : '400'}
-              color={activeLink === '#contato' ? '#F47327' : '#27272A'}
-              onClick={(event) => handleLinkClick(event, '#contato')}
-              _hover={{ textDecoration: 'none' }}
-              fontFamily="Poppins"
-            >
-              Contato
-            </ChakraLink>
-          </Flex>
-        </MotionFlex>
-      )}
+      {/* Mobile Drawer */}
+      <Drawer isOpen={isOpen} placement="right" onClose={onClose}>
+        <DrawerOverlay />
+        <DrawerContent bg="white">
+          <DrawerCloseButton color="#F47327" />
+          <DrawerHeader borderBottomWidth="1px" borderColor="gray.100">
+            <Image src={LogoImg} alt="Pygus Logo" h={8} />
+          </DrawerHeader>
+          <DrawerBody>
+            <VStack spacing={6} align="stretch" pt={6}>
+              {navItems.map((item) => (
+                <ChakraLink
+                  key={item.href}
+                  href={item.href}
+                  onClick={(event) => handleLinkClick(event, item.href)}
+                  fontSize="lg"
+                  fontWeight={activeLink === item.href ? '600' : '500'}
+                  color={activeLink === item.href ? '#F47327' : '#27272A'}
+                  _hover={{ 
+                    color: '#F47327',
+                    textDecoration: 'none',
+                    pl: 2
+                  }}
+                  transition="all 0.2s ease"
+                  fontFamily="Poppins"
+                  py={2}
+                  borderLeft={activeLink === item.href ? '3px solid #F47327' : '3px solid transparent'}
+                  pl={activeLink === item.href ? 4 : 3}
+                >
+                  {item.label}
+                </ChakraLink>
+              ))}
+            </VStack>
+          </DrawerBody>
+        </DrawerContent>
+      </Drawer>
     </>
   )
 }
