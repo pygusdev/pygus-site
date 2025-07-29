@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useCallback } from 'react'
 
 export const useParallax = (speed: number = 0.5) => {
   const [offset, setOffset] = useState(0)
@@ -35,18 +35,40 @@ export const useInView = (threshold: number = 0.1) => {
   const [element, setElement] = useState<HTMLElement | null>(null)
 
   useEffect(() => {
-    if (!element) return
+    if (!element || typeof window === 'undefined') return
 
     const observer = new IntersectionObserver(
       ([entry]) => {
-        setIsInView(entry.isIntersecting)
+        if (entry) {
+          setIsInView(entry.isIntersecting)
+        }
       },
       { threshold }
     )
 
-    observer.observe(element)
-    return () => observer.unobserve(element)
+    try {
+      observer.observe(element)
+    } catch (error) {
+      console.warn('Error observing element:', error)
+    }
+
+    return () => {
+      try {
+        if (element) {
+          observer.unobserve(element)
+        }
+        observer.disconnect()
+      } catch (error) {
+        console.warn('Error cleaning up observer:', error)
+      }
+    }
   }, [element, threshold])
 
-  return [setElement, isInView] as const
+  const setRef = useCallback((node: HTMLElement | null) => {
+    if (node !== element) {
+      setElement(node)
+    }
+  }, [element])
+
+  return [setRef, isInView] as const
 }

@@ -129,14 +129,16 @@ export const FaqArea = () => {
           animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -100 }}
           transition={{ duration: 1, delay: 0.2 }}
         >
-          <MotionText
-            fontWeight="300"
-            fontSize={'3xl'}
-            fontFamily="Poppins"
-            color="#52525B"
-            lineHeight="1.2"
-          >
-            Tem alguma
+          <MotionBox>
+            <MotionText
+              fontWeight="300"
+              fontSize={'3xl'}
+              fontFamily="Poppins"
+              color="#52525B"
+              lineHeight="1.2"
+            >
+              Tem alguma
+            </MotionText>
             <MotionText
               fontWeight="500"
               fontSize={'4xl'}
@@ -176,7 +178,7 @@ export const FaqArea = () => {
             >
               respondemos.
             </MotionText>
-          </MotionText>
+          </MotionBox>
         </MotionFlex>
       )}
 

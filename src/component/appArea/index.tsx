@@ -137,21 +137,26 @@ export const AppArea = () => {
               animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 100 }}
               transition={{ duration: 1, delay: 0.2 }}
             >
-              <MotionText
-                fontFamily="Poppins"
-                fontSize="3xl"
-                textAlign="right"
-                maxW="1000px"
-                color="#52525B"
-                fontWeight="300"
-                lineHeight="1.6"
-              >
-                O Pygus é um recurso com{' '}
+              <MotionBox>
                 <MotionText
-                  display="inline"
+                  fontFamily="Poppins"
+                  fontSize="3xl"
+                  textAlign="right"
+                  maxW="1000px"
+                  color="#52525B"
+                  fontWeight="300"
+                  lineHeight="1.6"
+                  mb={2}
+                >
+                  O Pygus é um recurso com
+                </MotionText>
+                <MotionText
+                  display="block"
                   fontSize="4xl"
                   color="#F47327"
                   fontWeight="500"
+                  textAlign="right"
+                  maxW="1000px"
                   initial={{ opacity: 0 }}
                   animate={isInView ? { opacity: 1 } : { opacity: 0 }}
                   transition={{ duration: 1, delay: 0.8 }}
@@ -161,12 +166,22 @@ export const AppArea = () => {
                     WebkitBackgroundClip: 'text',
                     WebkitTextFillColor: 'transparent',
                   }}
+                  mb={2}
                 >
                   pistas auditivas e visuais
-                </MotionText>{' '}
-                que propicia a percepção do fonema trabalhado na estrutura da
-                palavra.{' '}
-              </MotionText>
+                </MotionText>
+                <MotionText
+                  fontFamily="Poppins"
+                  fontSize="3xl"
+                  textAlign="right"
+                  maxW="1000px"
+                  color="#52525B"
+                  fontWeight="300"
+                  lineHeight="1.6"
+                >
+                  que propicia a percepção do fonema trabalhado na estrutura da palavra.
+                </MotionText>
+              </MotionBox>
             </MotionFlex>
             
             <MotionImage 

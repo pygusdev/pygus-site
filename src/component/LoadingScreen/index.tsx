@@ -12,20 +12,21 @@ export const LoadingScreen = ({ isLoading, onComplete }: LoadingScreenProps) => 
   const [progress, setProgress] = useState(0)
 
   useEffect(() => {
-    if (isLoading) {
-      const timer = setInterval(() => {
-        setProgress(prev => {
-          if (prev >= 100) {
-            clearInterval(timer)
-            setTimeout(onComplete, 500)
-            return 100
-          }
-          return prev + Math.random() * 15
-        })
-      }, 100)
+    if (!isLoading) return
 
-      return () => clearInterval(timer)
-    }
+    const timer = setInterval(() => {
+      setProgress(prev => {
+        const newProgress = prev + Math.random() * 15
+        if (newProgress >= 100) {
+          clearInterval(timer)
+          setTimeout(onComplete, 500)
+          return 100
+        }
+        return newProgress
+      })
+    }, 100)
+
+    return () => clearInterval(timer)
   }, [isLoading, onComplete])
 
   return (

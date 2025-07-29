@@ -14,17 +14,19 @@ interface Particle {
 
 export const AnimatedBackground = () => {
   const particles = useMemo(() => {
+    if (typeof window === 'undefined') return []
+    
     const particleArray: Particle[] = []
     const colors = ['#AFD6F1', '#CCE5F6', '#B2D8F2', '#DEEEFA', '#F0F8FD']
     
-    for (let i = 0; i < 20; i++) {
+    for (let i = 0; i < 15; i++) {
       particleArray.push({
         id: i,
         x: Math.random() * 100,
         y: Math.random() * 100,
-        size: Math.random() * 6 + 2,
-        duration: Math.random() * 20 + 10,
-        delay: Math.random() * 5,
+        size: Math.random() * 4 + 2,
+        duration: Math.random() * 15 + 10,
+        delay: Math.random() * 3,
         color: colors[Math.floor(Math.random() * colors.length)]
       })
     }

@@ -1,37 +1,68 @@
 import { Box } from '@chakra-ui/react'
 import { motion } from 'framer-motion'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useRef } from 'react'
 
 export const CustomCursor = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
   const [isHovering, setIsHovering] = useState(false)
+  const rafRef = useRef<number>()
 
   useEffect(() => {
+    if (typeof window === 'undefined') return
+
     const updateMousePosition = (e: MouseEvent) => {
-      setMousePosition({ x: e.clientX, y: e.clientY })
+      if (rafRef.current) {
+        cancelAnimationFrame(rafRef.current)
+      }
+      
+      rafRef.current = requestAnimationFrame(() => {
+        setMousePosition({ x: e.clientX, y: e.clientY })
+      })
     }
+
+    window.addEventListener('mousemove', updateMousePosition, { passive: true })
+
+    return () => {
+      window.removeEventListener('mousemove', updateMousePosition)
+      if (rafRef.current) {
+        cancelAnimationFrame(rafRef.current)
+      }
+    }
+  }, [])
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return
 
     const handleMouseEnter = () => setIsHovering(true)
     const handleMouseLeave = () => setIsHovering(false)
 
-    // Add event listeners for interactive elements
-    const interactiveElements = document.querySelectorAll(
-      'button, a, [role="button"], input, textarea, select'
-    )
+    // Add event listeners for interactive elements with a delay to ensure DOM is ready
+    const addListeners = () => {
+      const interactiveElements = document.querySelectorAll(
+        'button, a, [role="button"], input, textarea, select'
+      )
 
-    interactiveElements.forEach(el => {
-      el.addEventListener('mouseenter', handleMouseEnter)
-      el.addEventListener('mouseleave', handleMouseLeave)
-    })
+      interactiveElements.forEach(el => {
+        el.addEventListener('mouseenter', handleMouseEnter, { passive: true })
+        el.addEventListener('mouseleave', handleMouseLeave, { passive: true })
+      })
 
-    window.addEventListener('mousemove', updateMousePosition)
+      return interactiveElements
+    }
+
+    const timer = setTimeout(() => {
+      const elements = addListeners()
+      
+      return () => {
+        elements.forEach(el => {
+          el.removeEventListener('mouseenter', handleMouseEnter)
+          el.removeEventListener('mouseleave', handleMouseLeave)
+        })
+      }
+    }, 100)
 
     return () => {
-      window.removeEventListener('mousemove', updateMousePosition)
-      interactiveElements.forEach(el => {
-        el.removeEventListener('mouseenter', handleMouseEnter)
-        el.removeEventListener('mouseleave', handleMouseLeave)
-      })
+      clearTimeout(timer)
     }
   }, [])
 
