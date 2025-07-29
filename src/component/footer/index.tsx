@@ -20,15 +20,7 @@ export const Footer = () => {
     <>
       {isMobile ? (
         <Flex id="contato" flexDir="column">
-          <Flex>
-            <Image
-              src={preFooter}
-              alt="Pinguim no gelo"
-              objectFit="cover"
-              w="100%"
-            />
-          </Flex>
-          <Flex bgColor="#379598" height="550px" flexDir="column">
+          <Flex bgColor="#379598" height="400px" flexDir="column">
             <Flex flex={2} gap={2} flexDir="column">
               <Flex flexDir="column" px={4} mt={4}>
                 <Flex alignItems="flex-start">
@@ -174,15 +166,7 @@ export const Footer = () => {
         </Flex>
       ) : (
         <Flex id="contato" flexDir="column">
-          <Flex>
-            <Image
-              src={preFooter}
-              alt="Pinguim no gelo"
-              objectFit="cover"
-              w="100%"
-            />
-          </Flex>
-          <Flex bgColor="#379598" height="550px" flexDir="column">
+          <Flex bgColor="#379598" height="400px" flexDir="column">
             <Grid templateColumns="2fr 1fr 1fr 1fr" gap={8} px={20} py={14}>
               <GridItem>
                 <Flex flexDir="column">

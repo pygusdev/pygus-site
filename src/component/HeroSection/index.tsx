@@ -236,58 +236,7 @@ export const HeroSection = () => {
 
               {/* Espaço para futuros elementos quando dados reais estiverem disponíveis */}
 
-            {/* CTA Buttons */}
-            <HStack 
-              spacing={4} 
-              as={motion.div}
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1, delay: 0.8 }}
-              flexWrap="wrap"
-              justify="center"
-            >
-              <MotionButton
-                size="lg"
-                bg="#F47327"
-                color="white"
-                px={8}
-                py={6}
-                borderRadius="full"
-                fontWeight="600"
-                boxShadow="0 10px 40px rgba(244,115,39,0.3)"
-                leftIcon={<Download size={20} />}
-                whileHover={{ 
-                  scale: 1.05,
-                  boxShadow: "0 15px 50px rgba(244,115,39,0.4)",
-                  bg: "#E85D00"
-                }}
-                whileTap={{ scale: 0.98 }}
-                _hover={{ bg: "#E85D00" }}
-              >
-                Baixar App
-              </MotionButton>
-
-              <MotionButton
-                size="lg"
-                variant="outline"
-                borderColor="#F47327"
-                color="#F47327"
-                px={8}
-                py={6}
-                borderRadius="full"
-                fontWeight="600"
-                borderWidth="2px"
-                leftIcon={<Play size={20} />}
-                whileHover={{ 
-                  scale: 1.05,
-                  bg: "rgba(244,115,39,0.1)"
-                }}
-                whileTap={{ scale: 0.98 }}
-                _hover={{ bg: "rgba(244,115,39,0.1)" }}
-              >
-                Ver Demonstração
-              </MotionButton>
-            </HStack>
+                          {/* Botões removidos - agora estão apenas na seção de download */}
 
             </VStack>
           </GridItem>

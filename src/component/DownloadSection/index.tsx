@@ -166,7 +166,8 @@ export const DownloadSection = () => {
                   target="_blank"
                   size="lg"
                   h="auto"
-                  p={6}
+                  px={6}
+                  py={3}
                   bg="black"
                   color="white"
                   borderRadius="2xl"
@@ -198,7 +199,8 @@ export const DownloadSection = () => {
                   target="_blank"
                   size="lg"
                   h="auto"
-                  p={6}
+                  px={6}
+                  py={3}
                   bg="white"
                   color="black"
                   border="2px solid"

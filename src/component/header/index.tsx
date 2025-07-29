@@ -172,7 +172,7 @@ export const Header = () => {
             href="#home"
             onClick={(event) => handleLinkClick(event, '#home')}
           >
-            <Image src={LogoImg} alt="Logo" />
+            <Image src={LogoImg} alt="Logo" h={10} />
           </ChakraLink>
         </Flex>
       )}
@@ -205,7 +205,7 @@ export const Header = () => {
             href="#home"
             onClick={(event) => handleLinkClick(event, '#home')}
           >
-            <Image src={LogoImg} alt="Logo" />
+            <Image src={LogoImg} alt="Logo" h={12} />
           </ChakraLink>
           <Flex gap={8} ml={16}>
             <ChakraLink
