@@ -3,7 +3,7 @@ import { HeroSection } from '../component/HeroSection'
 import { DownloadSection } from '../component/DownloadSection'
 import { VideoSection } from '../component/VideoSection'
 import { ModernFAQ } from '../component/ModernFAQ'
-import { ModernFooter } from '../component/ModernFooter'
+import { Footer } from '../component/footer'
 import { WhatsAppFAB } from '../component/fab'
 
 export const Home = () => {
@@ -13,7 +13,7 @@ export const Home = () => {
       <DownloadSection />
       <VideoSection />
       <ModernFAQ />
-      <ModernFooter />
+      <Footer />
       <WhatsAppFAB />
     </Box>
   )
