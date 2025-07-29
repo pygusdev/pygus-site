@@ -8,10 +8,10 @@ const MotionBox = motion(Box)
 const MotionButton = motion(Button)
 
 export const DownloadSection = () => {
-  const stats = [
-    { icon: Users, value: "10K+", label: "Usuários Ativos" },
-    { icon: Star, value: "4.8", label: "Avaliação" },
-    { icon: Download, value: "50K+", label: "Downloads" },
+  const features = [
+    { icon: Users, title: "Para Toda Família", description: "Desenvolvido para pais e profissionais" },
+    { icon: Star, title: "Resultados Comprovados", description: "Baseado em evidências científicas" },
+    { icon: Download, title: "Fácil de Usar", description: "Interface intuitiva e amigável" },
   ]
 
   return (
@@ -19,7 +19,46 @@ export const DownloadSection = () => {
       py={20}
       background="linear-gradient(180deg, #f8fafc 0%, #ffffff 100%)"
       position="relative"
+      overflow="hidden"
     >
+      {/* Background Effects */}
+      <MotionBox
+        position="absolute"
+        top="10%"
+        left="5%"
+        width="200px"
+        height="200px"
+        borderRadius="50%"
+        background="radial-gradient(circle, rgba(244,115,39,0.1), rgba(244,115,39,0.02))"
+        animate={{
+          scale: [1, 1.3, 1],
+          opacity: [0.3, 0.7, 0.3],
+        }}
+        transition={{
+          duration: 8,
+          repeat: Infinity,
+          ease: "easeInOut",
+        }}
+      />
+      
+      <MotionBox
+        position="absolute"
+        bottom="20%"
+        right="10%"
+        width="150px"
+        height="150px"
+        borderRadius="30px"
+        background="linear-gradient(45deg, rgba(175,214,241,0.2), rgba(175,214,241,0.05))"
+        animate={{
+          rotate: [0, 180, 360],
+          scale: [1, 0.8, 1],
+        }}
+        transition={{
+          duration: 12,
+          repeat: Infinity,
+          ease: "easeInOut",
+        }}
+      />
       <Container maxW="1200px">
         <VStack spacing={16}>
           
@@ -34,7 +73,7 @@ export const DownloadSection = () => {
               <Text
                 fontSize={{ base: "3xl", md: "5xl" }}
                 fontWeight="800"
-                background="linear-gradient(135deg, #667eea 0%, #764ba2 100%)"
+                background="linear-gradient(135deg, #F47327 0%, #FF6B35 100%)"
                 backgroundClip="text"
                 textFillColor="transparent"
                 mb={4}
@@ -52,9 +91,9 @@ export const DownloadSection = () => {
             </MotionBox>
           </VStack>
 
-          {/* Stats */}
+          {/* Features */}
           <Grid templateColumns={{ base: "1fr", md: "repeat(3, 1fr)" }} gap={8} w="100%">
-            {stats.map((stat, index) => (
+            {features.map((feature, index) => (
               <MotionBox
                 key={index}
                 initial={{ opacity: 0, y: 30 }}
@@ -66,28 +105,44 @@ export const DownloadSection = () => {
                   p={8}
                   bg="white"
                   borderRadius="2xl"
-                  boxShadow="0 10px 40px rgba(0,0,0,0.1)"
+                  boxShadow="0 10px 40px rgba(244,115,39,0.1)"
                   border="1px solid"
-                  borderColor="gray.100"
+                  borderColor="orange.100"
                   spacing={4}
                   _hover={{
                     transform: "translateY(-5px)",
-                    boxShadow: "0 20px 60px rgba(0,0,0,0.15)",
+                    boxShadow: "0 20px 60px rgba(244,115,39,0.2)",
                   }}
                   transition="all 0.3s ease"
+                  position="relative"
+                  overflow="hidden"
                 >
+                  {/* Background Effect */}
+                  <Box
+                    position="absolute"
+                    top="-50%"
+                    right="-50%"
+                    width="100px"
+                    height="100px"
+                    borderRadius="50%"
+                    background="linear-gradient(135deg, rgba(244,115,39,0.1), rgba(244,115,39,0.05))"
+                    filter="blur(20px)"
+                  />
+                  
                   <Box
                     p={3}
                     borderRadius="xl"
-                    background="linear-gradient(135deg, #667eea 0%, #764ba2 100%)"
+                    background="linear-gradient(135deg, #F47327 0%, #FF6B35 100%)"
+                    position="relative"
+                    zIndex={1}
                   >
-                    <stat.icon size={24} color="white" />
+                    <feature.icon size={24} color="white" />
                   </Box>
-                  <Text fontSize="3xl" fontWeight="800" color="gray.800">
-                    {stat.value}
+                  <Text fontSize="xl" fontWeight="700" color="gray.800" textAlign="center">
+                    {feature.title}
                   </Text>
                   <Text fontSize="md" color="gray.600" textAlign="center">
-                    {stat.label}
+                    {feature.description}
                   </Text>
                 </VStack>
               </MotionBox>

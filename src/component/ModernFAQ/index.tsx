@@ -59,16 +59,16 @@ export const ModernFAQ = () => {
             viewport={{ once: true }}
             textAlign="center"
           >
-            <Text
-              fontSize={{ base: "3xl", md: "5xl" }}
-              fontWeight="800"
-              background="linear-gradient(135deg, #667eea 0%, #764ba2 100%)"
-              backgroundClip="text"
-              textFillColor="transparent"
-              mb={4}
-            >
-              Perguntas Frequentes
-            </Text>
+                          <Text
+                fontSize={{ base: "3xl", md: "5xl" }}
+                fontWeight="800"
+                background="linear-gradient(135deg, #F47327 0%, #FF6B35 100%)"
+                backgroundClip="text"
+                textFillColor="transparent"
+                mb={4}
+              >
+                Perguntas Frequentes
+              </Text>
             <Text
               fontSize={{ base: "lg", md: "xl" }}
               color="gray.600"
@@ -129,8 +129,8 @@ export const ModernFAQ = () => {
                             ml={4}
                             p={2}
                             borderRadius="lg"
-                            bg={isExpanded ? "purple.100" : "gray.100"}
-                            color={isExpanded ? "purple.600" : "gray.600"}
+                            bg={isExpanded ? "orange.100" : "gray.100"}
+                            color={isExpanded ? "#F47327" : "gray.600"}
                             transition="all 0.3s ease"
                           >
                             {isExpanded ? <Minus size={20} /> : <Plus size={20} />}
@@ -186,7 +186,7 @@ export const ModernFAQ = () => {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.98 }}
                 style={{
-                  background: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
+                  background: "linear-gradient(135deg, #F47327 0%, #FF6B35 100%)",
                   color: "white",
                   padding: "12px 32px",
                   borderRadius: "50px",
@@ -194,7 +194,7 @@ export const ModernFAQ = () => {
                   fontWeight: "600",
                   fontSize: "16px",
                   cursor: "pointer",
-                  boxShadow: "0 4px 20px rgba(102,126,234,0.3)"
+                  boxShadow: "0 4px 20px rgba(244,115,39,0.3)"
                 }}
               >
                 Falar com Especialista

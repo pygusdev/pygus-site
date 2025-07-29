@@ -28,7 +28,7 @@ export const ModernFooter = () => {
               <Text
                 fontSize={{ base: "3xl", md: "4xl" }}
                 fontWeight="900"
-                background="linear-gradient(135deg, #667eea 0%, #764ba2 100%)"
+                background="linear-gradient(135deg, #F47327 0%, #FF6B35 100%)"
                 backgroundClip="text"
                 textFillColor="transparent"
               >

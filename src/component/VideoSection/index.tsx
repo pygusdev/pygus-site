@@ -20,7 +20,7 @@ export const VideoSection = () => {
         width="200px"
         height="200px"
         borderRadius="50%"
-        background="linear-gradient(45deg, rgba(102,126,234,0.1), rgba(118,75,162,0.1))"
+        background="linear-gradient(45deg, rgba(244,115,39,0.1), rgba(244,115,39,0.05))"
         animate={{
           scale: [1, 1.2, 1],
           opacity: [0.3, 0.6, 0.3],
@@ -39,7 +39,7 @@ export const VideoSection = () => {
         width="150px"
         height="150px"
         borderRadius="20px"
-        background="linear-gradient(45deg, rgba(102,126,234,0.08), rgba(118,75,162,0.08))"
+        background="linear-gradient(45deg, rgba(175,214,241,0.08), rgba(175,214,241,0.04))"
         animate={{
           rotate: [0, 180, 360],
           scale: [1, 0.8, 1],
@@ -118,7 +118,7 @@ export const VideoSection = () => {
                 right="-2px"
                 bottom="-2px"
                 borderRadius="3xl"
-                background="linear-gradient(135deg, #667eea, #764ba2, #667eea)"
+                background="linear-gradient(135deg, #F47327, #FF6B35, #F47327)"
                 zIndex={-1}
               />
             </Box>
