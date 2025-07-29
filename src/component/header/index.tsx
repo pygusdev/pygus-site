@@ -13,17 +13,21 @@ import {
   useDisclosure,
   Text,
 } from '@chakra-ui/react'
+import { motion } from 'framer-motion'
 import LogoImg from '../../assets/logoImg.svg'
 import { useEffect, useRef, useState } from 'react'
 import { Menu } from 'lucide-react'
 
 export const Header = () => {
   const [activeLink, setActiveLink] = useState('#home')
+  const [scrolled, setScrolled] = useState(false)
   const paddingHorizontal = useBreakpointValue({ base: 4, md: 20 })
   const paddingVertical = useBreakpointValue({ base: 2, md: 6 })
   const isMobile = useBreakpointValue({ base: true, md: false })
   const { isOpen, onOpen, onClose } = useDisclosure()
   const btnRef = useRef()
+  
+  const MotionFlex = motion(Flex)
 
   const handleLinkClick = (
     event: React.MouseEvent<HTMLAnchorElement, MouseEvent>,
@@ -48,6 +52,9 @@ export const Header = () => {
       )
 
       let currentLink = '#home'
+      
+      // Check if scrolled for header blur effect
+      setScrolled(window.scrollY > 50)
 
       sections.forEach((section: any) => {
         const sectionTop = section.offsetTop - 96
@@ -171,7 +178,7 @@ export const Header = () => {
       )}
 
       {!isMobile && (
-        <Flex
+        <MotionFlex
           align="center"
           position="fixed"
           top="0"
@@ -181,9 +188,17 @@ export const Header = () => {
           w="100%"
           px={paddingHorizontal}
           py={paddingVertical}
+          initial={{ y: -100 }}
+          animate={{ y: 0 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
           style={{
-            background:
-              'linear-gradient(89.86deg, #FFFFFF 53.54%, #F0F8FD 60.58%, #DEEEFA 69.56%, #CCE5F6 81%, #C1DFF4 86.66%, #B2D8F2 99.81%)',
+            background: scrolled 
+              ? 'rgba(255, 255, 255, 0.95)'
+              : 'linear-gradient(89.86deg, #FFFFFF 53.54%, #F0F8FD 60.58%, #DEEEFA 69.56%, #CCE5F6 81%, #C1DFF4 86.66%, #B2D8F2 99.81%)',
+            backdropFilter: scrolled ? 'blur(20px)' : 'none',
+            borderBottom: scrolled ? '1px solid rgba(0, 0, 0, 0.1)' : 'none',
+            boxShadow: scrolled ? '0 4px 20px rgba(0, 0, 0, 0.1)' : 'none',
+            transition: 'all 0.3s ease-in-out',
           }}
         >
           <ChakraLink
@@ -250,7 +265,7 @@ export const Header = () => {
               Contato
             </ChakraLink>
           </Flex>
-        </Flex>
+        </MotionFlex>
       )}
     </>
   )
