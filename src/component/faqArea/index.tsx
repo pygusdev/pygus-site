@@ -3,6 +3,7 @@ import { AccordionFAQ } from '../accordionFAQ'
 
 export const FaqArea = () => {
   const isMobile = useBreakpointValue({ base: true, md: false })
+
  const faqData = [
   {
     title: 'Como criar e vincular um paciente?',
@@ -40,50 +41,74 @@ export const FaqArea = () => {
       mt="120px"
     >
       {isMobile ? (
-        <Flex alignItems="center" w="100%">
+        <Flex alignItems="center" w="100%" flexDir="column" textAlign="center">
           <Text
-            textAlign="center"
             fontWeight="300"
             fontSize={'lg'}
             fontFamily="Poppins"
             color="#52525B"
           >
-            Tem alguma{' '}
-            <Text
-              fontWeight="500"
-              fontSize={'2xl'}
-              fontFamily="Poppins"
-              color="#F47327"
-              display="inline"
-            >
-              dúvida?
-            </Text>{' '}
-            Nós{' '}
-            <Text
-              fontWeight="500"
-              fontSize={'2xl'}
-              fontFamily="Poppins"
-              color="#F47327"
-              display="inline"
-            >
-              respondemos.
-            </Text>
+            Tem alguma
           </Text>
-        </Flex>
-      ) : (
-        <Flex flexDir="column" w="30%" justifyContent="flex-start">
+          <Text
+            fontWeight="500"
+            fontSize={'2xl'}
+            fontFamily="Poppins"
+            color="#F47327"
+            style={{
+              background: 'linear-gradient(135deg, #F47327, #FF6B35)',
+              backgroundClip: 'text',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+            }}
+          >
+            dúvida?
+          </Text>
           <Text
             fontWeight="300"
-            fontSize={'3xl'}
+            fontSize={'lg'}
             fontFamily="Poppins"
             color="#52525B"
           >
-            Tem alguma
+            Nós
+          </Text>
+          <Text
+            fontWeight="500"
+            fontSize={'2xl'}
+            fontFamily="Poppins"
+            color="#F47327"
+            style={{
+              background: 'linear-gradient(135deg, #F47327, #FF6B35)',
+              backgroundClip: 'text',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+            }}
+          >
+            respondemos.
+          </Text>
+        </Flex>
+      ) : (
+        <Flex 
+          flexDir="column" 
+          w="30%" 
+          justifyContent="flex-start"
+        >
+          <Box>
+            <Text
+              fontWeight="300"
+              fontSize={'3xl'}
+              fontFamily="Poppins"
+              color="#52525B"
+              lineHeight="1.2"
+            >
+              Tem alguma
+            </Text>
             <Text
               fontWeight="500"
               fontSize={'4xl'}
               fontFamily="Poppins"
               color="#F47327"
+              display="block"
             >
               dúvida?
             </Text>
@@ -92,6 +117,7 @@ export const FaqArea = () => {
               fontSize={'3xl'}
               fontFamily="Poppins"
               color="#52525B"
+              display="block"
             >
               Nós
             </Text>
@@ -100,16 +126,24 @@ export const FaqArea = () => {
               fontSize={'4xl'}
               fontFamily="Poppins"
               color="#F47327"
+              display="block"
             >
               respondemos.
             </Text>
-          </Text>
+          </Box>
         </Flex>
       )}
 
-      <Box w="100%" gap={4} mt={isMobile ? 8 : 0}>
+      <Box 
+        w="100%" 
+        gap={4} 
+        mt={isMobile ? 8 : 0}
+      >
         {faqData.map((item, index) => (
-          <Box key={index} mb={4}>
+          <Box 
+            key={index} 
+            mb={4}
+          >
             <AccordionFAQ title={item.title} description={item.description} />
           </Box>
         ))}

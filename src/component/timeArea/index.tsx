@@ -1,4 +1,4 @@
-import { Flex, Text, useBreakpointValue } from '@chakra-ui/react'
+import { Flex, Text, useBreakpointValue, Box } from '@chakra-ui/react'
 import mereImg from '../../assets/mereImg.png'
 import joaoImg from '../../assets/joaoImage.png'
 import thiagoImg from '../../assets/thiagoImg.png'
@@ -8,6 +8,7 @@ import { MemberItem } from '../memberItem'
 
 export const TimeArea = () => {
   const isMobile = useBreakpointValue({ base: true, md: false })
+
   const timeDate = [
     {
       name: 'Mére Lander',
@@ -42,8 +43,17 @@ export const TimeArea = () => {
   ]
 
   return (
-    <Flex alignItems="center" flexDir="column">
-      <Flex mt={10} gap={1} alignItems="center">
+    <Flex 
+      alignItems="center" 
+      flexDir="column" 
+      id="contato"
+      py={20}
+    >
+      <Flex 
+        mt={10} 
+        gap={1} 
+        alignItems="center"
+      >
         <Text
           fontSize={isMobile ? 'lg' : '3xl'}
           fontFamily="Poppins"
@@ -61,6 +71,7 @@ export const TimeArea = () => {
           time
         </Text>
       </Flex>
+      
       <Flex
         maxW="1000px"
         flexWrap="wrap"
@@ -69,13 +80,14 @@ export const TimeArea = () => {
         mt={16}
       >
         {timeDate.map((item, index) => (
-          <MemberItem
-            key={index}
-            image={item.image}
-            name={item.name}
-            phase={item.phase}
-            post={item.post}
-          />
+          <Box key={index}>
+            <MemberItem
+              image={item.image}
+              name={item.name}
+              phase={item.phase}
+              post={item.post}
+            />
+          </Box>
         ))}
       </Flex>
     </Flex>

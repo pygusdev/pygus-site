@@ -5,6 +5,8 @@ import {
   Text,
   Link,
   useBreakpointValue,
+  Grid,
+  GridItem,
 } from '@chakra-ui/react'
 import preFooter from '../../assets/footerImage.png'
 import logoImg from '../../assets/logoImgWhite.svg'
@@ -18,15 +20,7 @@ export const Footer = () => {
     <>
       {isMobile ? (
         <Flex id="contato" flexDir="column">
-          <Flex>
-            <Image
-              src={preFooter}
-              alt="Pinguim no gelo"
-              objectFit="cover"
-              w="100%"
-            />
-          </Flex>
-          <Flex bgColor="#379598" height="550px" flexDir="column">
+          <Flex bgColor="#379598" height="400px" flexDir="column">
             <Flex flex={2} gap={2} flexDir="column">
               <Flex flexDir="column" px={4} mt={4}>
                 <Flex alignItems="flex-start">
@@ -172,33 +166,28 @@ export const Footer = () => {
         </Flex>
       ) : (
         <Flex id="contato" flexDir="column">
-          <Flex>
-            <Image
-              src={preFooter}
-              alt="Pinguim no gelo"
-              objectFit="cover"
-              w="100%"
-            />
-          </Flex>
-          <Flex bgColor="#379598" height="550px" flexDir="column">
-            <Flex flex={2} justifyContent="space-between">
-              <Flex flexDir="column" px={20} mt={14}>
-                <Flex alignItems="flex-start">
-                  <Image src={logoImg} alt="Logo pygus" />
+          <Flex bgColor="#379598" height="400px" flexDir="column">
+            <Grid templateColumns="2fr 1fr 1fr 1fr" gap={8} px={20} py={14}>
+              <GridItem>
+                <Flex flexDir="column">
+                  <Flex alignItems="flex-start">
+                    <Image src={logoImg} alt="Logo pygus" />
+                  </Flex>
+                  <Flex mt={6}>
+                    <Text
+                      fontSize="sm"
+                      color="white"
+                      fontWeight="400"
+                      fontFamily="Poppins"
+                    >
+                      CNPJ: 47.932.823/0001-19
+                    </Text>
+                  </Flex>
                 </Flex>
-                <Flex mt={6}>
-                  <Text
-                    fontSize="sm"
-                    color="white"
-                    fontWeight="400"
-                    fontFamily="Poppins"
-                  >
-                    CNPJ: 47.932.823/0001-19
-                  </Text>
-                </Flex>
-              </Flex>
-              <Flex>
-                <Flex alignItems="flex-start" px={20} mt={14} flexDir="column">
+              </GridItem>
+              
+              <GridItem>
+                <Flex alignItems="flex-start" flexDir="column">
                   <Text
                     fontSize="lg"
                     color="white"
@@ -258,9 +247,10 @@ export const Footer = () => {
                     </Link>
                   </Flex>
                 </Flex>
-              </Flex>
-              <Flex>
-                <Flex alignItems="flex-start" px={20} mt={14} flexDir="column">
+              </GridItem>
+              
+              <GridItem>
+                <Flex alignItems="flex-start" flexDir="column">
                   <Text
                     fontSize="lg"
                     color="white"
@@ -288,9 +278,10 @@ export const Footer = () => {
                     </Text>
                   </Flex>
                 </Flex>
-              </Flex>
-              <Flex>
-                <Flex alignItems="flex-start" px={20} mt={14} flexDir="column">
+              </GridItem>
+              
+              <GridItem>
+                <Flex alignItems="flex-start" flexDir="column">
                   <Text
                     fontSize="lg"
                     color="white"
@@ -314,8 +305,8 @@ export const Footer = () => {
                     </Link>
                   </Flex>
                 </Flex>
-              </Flex>
-            </Flex>
+              </GridItem>
+            </Grid>
 
             <Flex alignItems="flex-start" mb={20} px={20} flexDir="column">
               <Divider colorScheme="teal" />
