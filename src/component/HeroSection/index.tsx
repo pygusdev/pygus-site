@@ -1,6 +1,6 @@
 import { Box, Text, Button, Flex, Container, VStack, HStack, Image, Grid, GridItem } from '@chakra-ui/react'
 import { motion } from 'framer-motion'
-import { ChevronDown, Download, Play, Sparkles, Star, Users, Award, Zap, Heart, Shield } from 'lucide-react'
+import { ChevronDown, Download, Play, Sparkles, Star, Users, Award, Zap, Heart, Shield, Smartphone } from 'lucide-react'
 import LogoImg from '../../assets/logoImg.svg'
 import imageCell from '../../assets/imageCell.png'
 
@@ -9,12 +9,7 @@ const MotionText = motion(Text)
 const MotionButton = motion(Button)
 
 export const HeroSection = () => {
-  const features = [
-    { icon: Users, title: "10K+", subtitle: "Famílias Transformadas" },
-    { icon: Star, title: "4.9", subtitle: "Avaliação dos Pais" },
-    { icon: Award, title: "95%", subtitle: "Taxa de Sucesso" },
-    { icon: Zap, title: "30min", subtitle: "Sessões Diárias" }
-  ]
+  // Removido dados fictícios - será substituído por conteúdo real quando disponível
 
   return (
     <Box
@@ -216,7 +211,7 @@ export const HeroSection = () => {
                 <Image 
                   src={LogoImg} 
                   alt="Pygus Logo" 
-                  width={{ base: "250px", md: "350px", lg: "450px" }}
+                  width={{ base: "200px", md: "280px", lg: "320px" }}
                   height="auto"
                 />
               </MotionBox>
@@ -239,46 +234,7 @@ export const HeroSection = () => {
                 de crianças com transtorno dos sons da fala
               </MotionText>
 
-              {/* Features Stats */}
-              <MotionBox
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 1, delay: 0.7 }}
-                w="100%"
-              >
-                <Grid templateColumns="repeat(2, 1fr)" gap={6} maxW="400px">
-                  {features.map((feature, index) => (
-                    <MotionBox
-                      key={index}
-                      initial={{ opacity: 0, scale: 0.8 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      transition={{ duration: 0.8, delay: 0.9 + (index * 0.1) }}
-                      whileHover={{ scale: 1.05 }}
-                    >
-                      <VStack
-                        p={4}
-                        bg="rgba(255,255,255,0.8)"
-                        borderRadius="xl"
-                        boxShadow="0 8px 32px rgba(244,115,39,0.1)"
-                        border="1px solid"
-                        borderColor="rgba(244,115,39,0.2)"
-                        spacing={2}
-                        backdropFilter="blur(10px)"
-                      >
-                        <Box color="#F47327">
-                          <feature.icon size={20} />
-                        </Box>
-                        <Text fontSize="lg" fontWeight="800" color="#F47327">
-                          {feature.title}
-                        </Text>
-                        <Text fontSize="xs" color="#52525B" textAlign="center">
-                          {feature.subtitle}
-                        </Text>
-                      </VStack>
-                    </MotionBox>
-                  ))}
-                </Grid>
-              </MotionBox>
+              {/* Espaço para futuros elementos quando dados reais estiverem disponíveis */}
 
             {/* CTA Buttons */}
             <HStack 
@@ -299,7 +255,7 @@ export const HeroSection = () => {
                 borderRadius="full"
                 fontWeight="600"
                 boxShadow="0 10px 40px rgba(244,115,39,0.3)"
-                leftIcon={<Download size={20} />}
+                leftIcon={<Smartphone size={20} />}
                 whileHover={{ 
                   scale: 1.05,
                   boxShadow: "0 15px 50px rgba(244,115,39,0.4)",
@@ -308,7 +264,7 @@ export const HeroSection = () => {
                 whileTap={{ scale: 0.98 }}
                 _hover={{ bg: "#E85D00" }}
               >
-                Baixar App
+                App Store
               </MotionButton>
 
               <MotionButton
@@ -321,7 +277,7 @@ export const HeroSection = () => {
                 borderRadius="full"
                 fontWeight="600"
                 borderWidth="2px"
-                leftIcon={<Play size={20} />}
+                leftIcon={<Smartphone size={20} />}
                 whileHover={{ 
                   scale: 1.05,
                   bg: "rgba(244,115,39,0.1)"
@@ -329,7 +285,7 @@ export const HeroSection = () => {
                 whileTap={{ scale: 0.98 }}
                 _hover={{ bg: "rgba(244,115,39,0.1)" }}
               >
-                Ver Demonstração
+                Google Play
               </MotionButton>
             </HStack>
 

@@ -8,7 +8,7 @@ export const VideoSection = () => {
   return (
     <Box
       py={20}
-      background="linear-gradient(135deg, #1a1a2e 0%, #16213e 100%)"
+      background="linear-gradient(135deg, #FEFFFF 0%, #F0F8FD 50%, #AFD6F1 100%)"
       position="relative"
       overflow="hidden"
     >
@@ -65,14 +65,14 @@ export const VideoSection = () => {
             <Text
               fontSize={{ base: "3xl", md: "5xl" }}
               fontWeight="800"
-              color="white"
+              color="#27272A"
               mb={4}
             >
               Veja o Pygus em Ação
             </Text>
             <Text
               fontSize={{ base: "lg", md: "xl" }}
-              color="gray.300"
+              color="#52525B"
               maxW="600px"
               lineHeight="1.6"
             >
@@ -93,10 +93,10 @@ export const VideoSection = () => {
               position="relative"
               borderRadius="3xl"
               overflow="hidden"
-              boxShadow="0 25px 80px rgba(0,0,0,0.4)"
-              bg="gray.900"
-              border="1px solid"
-              borderColor="gray.700"
+              boxShadow="0 25px 80px rgba(244,115,39,0.2)"
+              bg="white"
+              border="2px solid"
+              borderColor="rgba(244,115,39,0.1)"
             >
               {/* Video Container */}
               <AspectRatio ratio={16 / 9}>
@@ -125,7 +125,7 @@ export const VideoSection = () => {
 
             {/* Video Stats/Info */}
             <VStack spacing={4} mt={8} textAlign="center">
-              <Text color="gray.400" fontSize="sm">
+              <Text color="#52525B" fontSize="sm">
                 ⭐ Mais de 100.000 visualizações
               </Text>
               
@@ -134,7 +134,7 @@ export const VideoSection = () => {
                 gap={6}
                 flexWrap="wrap"
                 justify="center"
-                color="gray.300"
+                color="#52525B"
                 fontSize="sm"
               >
                 <Text>🎯 Resultados Comprovados</Text>
@@ -156,13 +156,13 @@ export const VideoSection = () => {
               <Text
                 fontSize={{ base: "xl", md: "2xl" }}
                 fontWeight="600"
-                color="white"
+                color="#27272A"
               >
                 Pronto para começar?
               </Text>
               <Text
                 fontSize="md"
-                color="gray.400"
+                color="#52525B"
                 maxW="500px"
               >
                 Junte-se a milhares de famílias que já estão transformando a comunicação de suas crianças
