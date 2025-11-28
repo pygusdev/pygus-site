@@ -129,7 +129,7 @@ export const Footer = () => {
                       fontWeight="400"
                       fontFamily="Poppins"
                     >
-                      + 55 (82) 98851-8859
+                      +55 (81) 99420-6939
                     </Text>
                   </Flex>
                 </Flex>
@@ -284,7 +284,7 @@ export const Footer = () => {
                       fontWeight="400"
                       fontFamily="Poppins"
                     >
-                      + 55 (82) 98851-8859
+                      +55 (81) 99420-6939
                     </Text>
                   </Flex>
                 </Flex>

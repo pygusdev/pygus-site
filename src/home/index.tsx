@@ -1,12 +1,13 @@
 import { Box, useBreakpointValue } from '@chakra-ui/react'
-import { AppArea } from '../component/appArea'
-import { DownloadArea } from '../component/downloadArea/index'
-import { FaqArea } from '../component/faqArea'
-import { Footer } from '../component/footer'
-import { Header } from '../component/header'
-import { PlansArea } from '../component/plansArea'
-import { TimeArea } from '../component/timeArea'
-import { WhatsAppFAB } from '../component/fab'
+import { AppArea } from '../components/appArea'
+import { DownloadArea } from '../components/downloadArea/index'
+import { FaqArea } from '../components/faqArea'
+import { FeaturesArea } from '../components/FeaturesArea'
+import { TestimonialsArea } from '../components/TestimonialsArea'
+import { ModernFooter } from '../components/ModernFooter'
+import { ModernHeader } from '../components/ModernHeader'
+import { PlansArea } from '../components/plansArea'
+import { WhatsAppFAB } from '../components/fab'
 
 export const Home = () => {
   const isMobile = useBreakpointValue({ base: true, md: false })
@@ -19,21 +20,22 @@ export const Home = () => {
               'radial-gradient(75.96% 66.21% at 93.03% 14.84%, #AFD6F1 0%, #FEFFFF 100%)',
           }}
         >
-          <Header />
+          <ModernHeader />
           <DownloadArea />
         </Box>
       ) : (
         <>
-          <Header />
+          <ModernHeader />
           <DownloadArea />
         </>
       )}
 
+      <FeaturesArea />
       <AppArea />
+      <TestimonialsArea />
       <PlansArea />
       <FaqArea />
-      <TimeArea />
-      <Footer />
+      <ModernFooter />
       <WhatsAppFAB />
     </>
   )

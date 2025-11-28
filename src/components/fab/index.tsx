@@ -18,7 +18,7 @@ export const WhatsAppFAB = () => {
       <Flex>
         <Link
           borderRadius="full"
-          href={`https://wa.me/+5582988518859?text=${message}`}
+          href={`https://wa.me/+5581994206939?text=${message}`}
           isExternal
           p={isMobile ? 3 : 4}
           bgColor="#10B981"
