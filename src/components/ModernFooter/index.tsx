@@ -1,5 +1,5 @@
 import { Box, Text, Container, VStack, HStack, Link, Divider, SimpleGrid, Image, Icon } from '@chakra-ui/react'
-import { Heart, Mail, Phone, MapPin, Instagram, Linkedin, FileText } from 'lucide-react'
+import { Heart, Mail, Phone, Instagram, Linkedin, FileText } from 'lucide-react'
 import LogoImg from '../../assets/logoImg.svg'
 
 export const ModernFooter = () => {
