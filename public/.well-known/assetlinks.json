@@ -1,0 +1,12 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.pygus.profissional",
+      "sha256_cert_fingerprints": [
+        "32:4C:4F:A5:69:F8:5E:FE:1D:03:ED:16:69:AC:CE:5E:4F:62:1C:97:2C:57:83:D4:E9:F4:DC:5F:BE:13:EC:DD"
+      ]
+    }
+  }
+]

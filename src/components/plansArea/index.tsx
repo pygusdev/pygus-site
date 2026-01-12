@@ -1,15 +1,43 @@
-import { Box, Button, Container, Flex, Heading, List, ListItem, ListIcon, Stack, Text, useColorModeValue, Badge } from '@chakra-ui/react'
+import { Box, Button, Container, Flex, Heading, List, ListItem, ListIcon, Stack, Text, useColorModeValue, Badge, Switch, HStack } from '@chakra-ui/react'
 import { Check } from 'lucide-react'
 import { Reveal } from '../Reveal'
+import { useState } from 'react'
 
-interface PlanProps {
+const APP_STORE_URL = 'https://apps.apple.com/br/app/pygus-profissional/id6514278911'
+const PLAY_STORE_URL = 'https://play.google.com/store/apps/details?id=com.pygus.profissional'
+
+const handleDownloadClick = () => {
+  const userAgent = navigator.userAgent || navigator.vendor
+
+  // Detecta iOS
+  if (/iPad|iPhone|iPod/.test(userAgent)) {
+    window.open(APP_STORE_URL, '_blank')
+    return
+  }
+
+  // Detecta Android
+  if (/android/i.test(userAgent)) {
+    window.open(PLAY_STORE_URL, '_blank')
+    return
+  }
+
+  // Desktop ou outros - abre Play Store como padrão (Android é mais comum)
+  window.open(PLAY_STORE_URL, '_blank')
+}
+
+interface PlanData {
   title: string
   price: string
   features: string[]
   recommended?: boolean
+  discount?: string
 }
 
-const Plan = ({ title, price, features, recommended = false }: PlanProps) => {
+interface PlanProps extends PlanData {
+  period: string
+}
+
+const Plan = ({ title, price, period, features, recommended = false, discount }: PlanProps) => {
   const bg = useColorModeValue('white', 'gray.800')
   const borderColor = recommended ? 'brand.orange' : 'gray.200'
   const shadow = recommended ? 'xl' : 'md'
@@ -48,15 +76,22 @@ const Plan = ({ title, price, features, recommended = false }: PlanProps) => {
         </Badge>
       )}
       <Stack spacing={4} mb={8}>
-        <Text fontSize="xl" fontWeight="bold" color="gray.500">
-          {title}
-        </Text>
-        <Flex align="baseline">
-          <Text fontSize="4xl" fontWeight="900">
+        <HStack>
+          <Text fontSize="xl" fontWeight="bold" color="gray.500">
+            {title}
+          </Text>
+          {discount && (
+            <Badge colorScheme="green" rounded="full" px={2} py={0.5} fontSize="xs">
+              Economize {discount}
+            </Badge>
+          )}
+        </HStack>
+        <Flex align="baseline" wrap="nowrap">
+          <Text fontSize="3xl" fontWeight="900" whiteSpace="nowrap">
             R$ {price}
           </Text>
-          <Text fontSize="md" color="gray.500" ml={2}>
-            /mês
+          <Text fontSize="md" color="gray.500" ml={2} whiteSpace="nowrap">
+            /{period}
           </Text>
         </Flex>
       </Stack>
@@ -79,6 +114,7 @@ const Plan = ({ title, price, features, recommended = false }: PlanProps) => {
           bg: recommended ? 'orange.600' : 'gray.200',
         }}
         rounded="lg"
+        onClick={handleDownloadClick}
       >
         Começar Agora
       </Button>
@@ -87,11 +123,120 @@ const Plan = ({ title, price, features, recommended = false }: PlanProps) => {
 }
 
 export const PlansArea = () => {
+  const [isAnnual, setIsAnnual] = useState(false)
+
+  const plans: { monthly: PlanData[]; annual: PlanData[] } = {
+    monthly: [
+      {
+        title: 'Gratuito',
+        price: '0,00',
+        features: [
+          'Até 2 pacientes',
+          '1 RFA por paciente',
+          'Acesso ilimitado a fonemas',
+          'Jogo da memória ilimitado',
+          'Paciente teste incluído',
+        ],
+      },
+      {
+        title: 'Básico',
+        price: '39,99',
+        features: [
+          'Até 5 pacientes',
+          '3 RFAs por paciente',
+          'Acesso ilimitado a fonemas',
+          'Jogo da memória ilimitado',
+          'Paciente teste incluído',
+        ],
+      },
+      {
+        title: 'Pro',
+        price: '89,99',
+        recommended: true,
+        features: [
+          'Até 15 pacientes',
+          'RFA Ilimitado',
+          'Acesso ilimitado a fonemas',
+          'Jogo da memória ilimitado',
+          'Paciente teste incluído',
+          'Suporte prioritário',
+        ],
+      },
+      {
+        title: 'Premium',
+        price: '179,90',
+        features: [
+          'Até 30 pacientes',
+          'RFA Ilimitado',
+          'Acesso ilimitado a fonemas',
+          'Jogo da memória ilimitado',
+          'Paciente teste incluído',
+          'Suporte prioritário',
+        ],
+      },
+    ],
+    annual: [
+      {
+        title: 'Gratuito',
+        price: '0,00',
+        features: [
+          'Até 2 pacientes',
+          '1 RFA por paciente',
+          'Acesso ilimitado a fonemas',
+          'Jogo da memória ilimitado',
+          'Paciente teste incluído',
+        ],
+      },
+      {
+        title: 'Básico',
+        price: '399,90',
+        discount: '17%',
+        features: [
+          'Até 5 pacientes',
+          '3 RFAs por paciente',
+          'Acesso ilimitado a fonemas',
+          'Jogo da memória ilimitado',
+          'Paciente teste incluído',
+        ],
+      },
+      {
+        title: 'Pro',
+        price: '899,90',
+        discount: '17%',
+        recommended: true,
+        features: [
+          'Até 15 pacientes',
+          'RFA Ilimitado',
+          'Acesso ilimitado a fonemas',
+          'Jogo da memória ilimitado',
+          'Paciente teste incluído',
+          'Suporte prioritário',
+        ],
+      },
+      {
+        title: 'Premium',
+        price: '1.799,00',
+        discount: '17%',
+        features: [
+          'Até 30 pacientes',
+          'RFA Ilimitado',
+          'Acesso ilimitado a fonemas',
+          'Jogo da memória ilimitado',
+          'Paciente teste incluído',
+          'Suporte prioritário',
+        ],
+      },
+    ],
+  }
+
+  const currentPlans = isAnnual ? plans.annual : plans.monthly
+  const period = isAnnual ? 'ano' : 'mês'
+
   return (
     <Box py={24} id="precos" bg="white">
       <Container maxW="container.xl">
         <Reveal>
-          <Stack spacing={4} as={Container} maxW={'3xl'} textAlign={'center'} mb={16}>
+          <Stack spacing={4} as={Container} maxW={'3xl'} textAlign={'center'} mb={8}>
             <Heading fontSize={'4xl'} color="gray.700">
               Planos flexíveis para <Text as="span" color="brand.orange">você</Text>
             </Heading>
@@ -101,57 +246,45 @@ export const PlansArea = () => {
           </Stack>
         </Reveal>
 
+        <Reveal delay={0.1}>
+          <HStack justify="center" mb={12} spacing={4}>
+            <Text fontWeight={!isAnnual ? 'bold' : 'normal'} color={!isAnnual ? 'gray.700' : 'gray.500'}>
+              Mensal
+            </Text>
+            <Switch
+              size="lg"
+              colorScheme="orange"
+              isChecked={isAnnual}
+              onChange={() => setIsAnnual(!isAnnual)}
+            />
+            <Text fontWeight={isAnnual ? 'bold' : 'normal'} color={isAnnual ? 'gray.700' : 'gray.500'}>
+              Anual
+            </Text>
+          </HStack>
+        </Reveal>
+
         <Flex
-          direction={{ base: 'column', md: 'row' }}
-          gap={{ base: 10, md: 4, lg: 10 }}
+          direction={{ base: 'column', lg: 'row' }}
+          gap={{ base: 10, lg: 4, xl: 6 }}
           align="stretch"
           justify="center"
           w="full"
         >
-          <Reveal delay={0.1} fullHeight flex="1" maxW={{ md: '340px' }}>
-            <Plan
-              title="Gratuito"
-              price="0,00"
-              features={[
-                'Até 2 pacientes',
-                '1 RFA por paciente',
-                'Acesso ilimitado a fonemas',
-                'Jogo da memória ilimitado',
-                'Paciente teste incluído',
-              ]}
-            />
-          </Reveal>
-          <Reveal delay={0.2} fullHeight flex="1" maxW={{ md: '340px' }}>
-            <Plan
-              title="Básico"
-              price="39,99"
-              recommended
-              features={[
-                'Até 5 pacientes',
-                '3 RFAs por paciente',
-                'Acesso ilimitado a fonemas',
-                'Jogo da memória ilimitado',
-                'Paciente teste incluído',
-              ]}
-            />
-          </Reveal>
-          <Reveal delay={0.3} fullHeight flex="1" maxW={{ md: '340px' }}>
-            <Plan
-              title="Pro"
-              price="89,99"
-              features={[
-                'Até 15 pacientes',
-                'RFA Ilimitado',
-                'Acesso ilimitado a fonemas',
-                'Jogo da memória ilimitado',
-                'Paciente teste incluído',
-                'Suporte prioritário',
-              ]}
-            />
-          </Reveal>
+          {currentPlans.map((plan, index) => (
+            <Reveal key={plan.title} delay={0.1 + index * 0.1} fullHeight flex="1" maxW={{ lg: '280px' }}>
+              <Plan
+                title={plan.title}
+                price={plan.price}
+                period={period}
+                features={plan.features}
+                recommended={plan.recommended}
+                discount={plan.discount}
+              />
+            </Reveal>
+          ))}
         </Flex>
 
-        <Reveal delay={0.4}>
+        <Reveal delay={0.5}>
           <Text textAlign="center" mt={12} color="gray.500" fontSize="sm">
             *Atendimento comercial das 08h às 18 horas.
           </Text>

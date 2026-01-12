@@ -25,9 +25,9 @@ export const FaqArea = () => {
         'Você pode assinar qualquer plano diretamente pelo nosso aplicativo. Se tiver dúvidas, entre em contato com a nossa equipe pelo whatsApp ou e-mail de suporte.',
     },
     {
-      title: 'Consigo cadastrar mais de 5 pacientes (Básico) ou 15 pacientes (Pro)?',
+      title: 'Quantos pacientes posso ter em cada plano?',
       description:
-        'É possível criar quantos perfis de pacientes desejar, mas somente até 5 (plano Básico) ou 15 (plano Pró) poderão estar ativos simultaneamente.',
+        'Depende do seu plano: Gratuito (2 pacientes), Básico (5 pacientes), Pro (15 pacientes) e Premium (30 pacientes). É possível criar quantos perfis desejar, mas somente o limite do seu plano poderá estar ativo simultaneamente.',
     },
     {
       title: 'Posso usar o aplicativo com qualquer paciente?',

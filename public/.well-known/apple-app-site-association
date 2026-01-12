@@ -1,0 +1,11 @@
+{
+  "applinks": {
+    "apps": [],
+    "details": [
+      {
+        "appID": "3N6H37ZSQ6.com.pygus.profissional",
+        "paths": ["/app/*"]
+      }
+    ]
+  }
+}
