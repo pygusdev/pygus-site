@@ -1,13 +1,8 @@
-import { ChakraProvider } from '@chakra-ui/react'
 import { Home } from './home'
-import theme from './theme'
+import './styles.css'
 
 function App() {
-  return (
-    <ChakraProvider theme={theme}>
-      <Home />
-    </ChakraProvider>
-  )
+  return <Home />
 }
 
 export default App
