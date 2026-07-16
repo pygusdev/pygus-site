@@ -4,11 +4,17 @@ import {
   AudioLines,
   Brain,
   Check,
+  Ear,
   Heart,
+  House,
   Menu,
   Mic,
   Plus,
+  Puzzle,
+  Speech,
+  Split,
   Star,
+  Stethoscope,
   Target,
   Users,
   X,
@@ -19,7 +25,7 @@ import googlePlaySvg from '../assets/playstore.svg'
 import pinguimFalando from '../assets/pinguim-falando.png'
 import pinguimComemorando from '../assets/pinguim-comemorando.png'
 import pinguimAcenando from '../assets/pinguim-acenando.png'
-import telaNivel2 from '../assets/tela-nivel2.png'
+import telaHomeNova from '../assets/tela-home-nova.png'
 import depoimento1 from '../assets/depoimento1.jpeg'
 import depoimento2 from '../assets/depoimento2.jpeg'
 import whatsappIcon from '../assets/whatsappIcon.svg'
@@ -99,19 +105,44 @@ const features = [
 
 const levels = [
   {
-    name: 'Nível 1',
-    title: 'Olhar e reconhecer',
-    text: 'Atividades visuais sem fala, para criar vínculo com o jogo.',
+    number: '1',
+    color: 'green',
+    icon: Ear,
+    tag: 'percepção',
+    title: 'Escutar',
+    text: 'Ela vê a boca fazendo o som, escuta sílabas e aponta o que ouviu — tudo antes de precisar falar.',
   },
   {
-    name: 'Nível 2',
-    title: 'Falar e gravar',
-    text: 'Treino de palavras com gravação de voz e reforço positivo.',
+    number: '2',
+    color: 'orange',
+    icon: Puzzle,
+    tag: 'sílabas',
+    title: 'Montar',
+    text: 'Junta letras para formar sílabas e sílabas para formar palavras, ouvindo o som de cada junção.',
   },
   {
-    name: 'Nível 3',
-    title: 'Frases completas',
-    text: 'Repetição de frases com acompanhamento de progresso.',
+    number: '3',
+    color: 'blue',
+    icon: Split,
+    tag: 'diferenciação',
+    title: 'Diferenciar',
+    text: 'Compara sons parecidos, diz se são iguais ou diferentes e descobre onde o som mora na palavra.',
+  },
+  {
+    number: '4',
+    color: 'pink',
+    icon: Mic,
+    tag: 'voz',
+    title: 'Falar sílabas',
+    text: 'Chegou a vez do microfone: repete sílabas, ouve a própria voz e treina até o som sair redondo.',
+  },
+  {
+    number: '5',
+    color: 'purple',
+    icon: Speech,
+    tag: 'frases',
+    title: 'Falar palavras',
+    text: 'Fala palavras completas, monta frases e conta histórias com as próprias palavras.',
   },
 ]
 
@@ -282,7 +313,10 @@ export const Home = () => {
             ))}
           </nav>
 
-          <button className="btn btn-primary desktop-only" onClick={openBestStore}>
+          <button
+            className="btn btn-primary desktop-only"
+            onClick={openBestStore}
+          >
             Baixar app
             <ArrowRight size={17} />
           </button>
@@ -300,7 +334,11 @@ export const Home = () => {
       {menuOpen && (
         <nav className="mobile-nav" aria-label="Navegação mobile">
           {navLinks.map((link) => (
-            <a key={link.href} href={link.href} onClick={() => setMenuOpen(false)}>
+            <a
+              key={link.href}
+              href={link.href}
+              onClick={() => setMenuOpen(false)}
+            >
               {link.label}
             </a>
           ))}
@@ -343,7 +381,6 @@ export const Home = () => {
               Ver como funciona
             </a>
           </div>
-
         </div>
 
         <div className="hero-stage" data-reveal>
@@ -363,15 +400,24 @@ export const Home = () => {
             <span className="letter-block block-yellow">A</span>
           </div>
 
-          <div className="sticker float-sticker sticker-note" aria-hidden="true">
+          <div
+            className="sticker float-sticker sticker-note"
+            aria-hidden="true"
+          >
             ♪ rá-rá-rá
           </div>
-          <div className="sticker float-sticker sticker-voice" aria-hidden="true">
+          <div
+            className="sticker float-sticker sticker-voice"
+            aria-hidden="true"
+          >
             <Mic size={16} />
             voz gravada
             <strong>92%</strong>
           </div>
-          <div className="sticker float-sticker sticker-fonema" aria-hidden="true">
+          <div
+            className="sticker float-sticker sticker-fonema"
+            aria-hidden="true"
+          >
             /R/ liberado
             <Check size={15} />
           </div>
@@ -397,15 +443,20 @@ export const Home = () => {
         <div className="section-heading" data-reveal>
           <span className="sticker sticker-eyebrow">como funciona</span>
           <h2>
-            Um ciclo simples entre{' '}
-            <em>consultório</em> e <em>casa</em>.
+            Um ciclo simples entre <em>consultório</em> e <em>casa</em>.
           </h2>
         </div>
 
         <div className="steps-grid">
           {steps.map((step, index) => (
-            <article className={`step-card step-${index + 1}`} key={step.title} data-reveal>
-              <span className={`letter-block step-block block-${['teal', 'orange', 'yellow'][index]}`}>
+            <article
+              className={`step-card step-${index + 1}`}
+              key={step.title}
+              data-reveal
+            >
+              <span
+                className={`letter-block step-block block-${['teal', 'orange', 'yellow'][index]}`}
+              >
                 {step.number}
               </span>
               <h3>{step.title}</h3>
@@ -450,8 +501,8 @@ export const Home = () => {
             <div className="phone-screen">
               <img
                 className="app-screen-img"
-                src={telaNivel2}
-                alt="Tela do nível 2 do app Pygus: a criança vê a palavra abacaxi e toca para falar"
+                src={telaHomeNova}
+                alt="Tela inicial do app Pygus: fonema /R/ em treino com trilha de 5 níveis, lista de fonemas e modo reforço"
               />
             </div>
           </div>
@@ -469,21 +520,74 @@ export const Home = () => {
             Em casa, o treino continua — <em>sem parecer dever</em>.
           </h2>
           <p>
-            A criança joga, grava a própria voz e ganha reforço positivo do
-            pinguim. A família participa, e o profissional vê tudo.
+            Com o novo treino de nível, cada fonema vira uma trilha: a criança
+            escuta, monta, diferencia e fala — e o pinguim comemora cada
+            conquista.
           </p>
 
-          <ol className="level-list">
-            {levels.map((level) => (
-              <li key={level.name}>
-                <span className="level-tag">{level.name}</span>
-                <div>
-                  <strong>{level.title}</strong>
-                  <p>{level.text}</p>
+          <ul className="app-points">
+            <li>
+              <Check size={16} strokeWidth={3} />O fono libera os fonemas, e
+              cada um vira uma trilha de treino.
+            </li>
+            <li>
+              <Check size={16} strokeWidth={3} />A criança avança nível por
+              nível e vê o progresso na tela inicial.
+            </li>
+            <li>
+              <Check size={16} strokeWidth={3} />
+              Fonema aprendido entra no modo reforço, para não esquecer.
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <section className="levels-section" id="treino">
+        <div className="section-heading" data-reveal>
+          <span className="sticker sticker-eyebrow">treino de nível</span>
+          <h2>
+            Do primeiro som à conversa, em <em>5 níveis</em>.
+          </h2>
+          <p>
+            A trilha guia a criança do escutar ao falar, e cada conquista
+            destrava a próxima etapa — no ritmo dela.
+          </p>
+
+          <div className="levels-modes">
+            <span className="sticker mode-sticker">
+              <House size={15} />
+              em casa, no app do paciente
+            </span>
+            <span className="sticker mode-sticker">
+              <Stethoscope size={15} />
+              no consultório, no app do profissional
+            </span>
+          </div>
+        </div>
+
+        <div className="levels-trail">
+          {levels.map((level) => {
+            const Icon = level.icon
+            return (
+              <article
+                className={`level-card level-${level.color}`}
+                key={level.title}
+                data-reveal
+              >
+                <div className="level-card-top">
+                  <span className="letter-block level-block">
+                    {level.number}
+                  </span>
+                  <span className="level-chip">
+                    <Icon size={14} strokeWidth={2.4} />
+                    {level.tag}
+                  </span>
                 </div>
-              </li>
-            ))}
-          </ol>
+                <h3>{level.title}</h3>
+                <p>{level.text}</p>
+              </article>
+            )
+          })}
         </div>
       </section>
 
@@ -509,9 +613,12 @@ export const Home = () => {
                     <Star key={starIndex} size={15} fill="currentColor" />
                   ))}
                 </div>
-                <blockquote>"{testimonial.quote}"</blockquote>
+                <blockquote>&ldquo;{testimonial.quote}&rdquo;</blockquote>
                 <div className="testimonial-author">
-                  <img src={testimonial.image} alt={`Foto de ${testimonial.name}`} />
+                  <img
+                    src={testimonial.image}
+                    alt={`Foto de ${testimonial.name}`}
+                  />
                   <div>
                     <strong>{testimonial.name}</strong>
                     <span>{testimonial.role}</span>
@@ -555,7 +662,9 @@ export const Home = () => {
               key={plan.title}
               data-reveal
             >
-              {plan.featured && <span className="plan-badge">mais popular</span>}
+              {plan.featured && (
+                <span className="plan-badge">mais popular</span>
+              )}
               <h3>{plan.title}</h3>
               <span className="plan-note">{plan.note}</span>
               <div className="plan-price">
@@ -600,7 +709,10 @@ export const Home = () => {
           {faqs.map((faq, index) => {
             const isOpen = activeFaq === index
             return (
-              <div className={`faq-item ${isOpen ? 'is-open' : ''}`} key={faq.question}>
+              <div
+                className={`faq-item ${isOpen ? 'is-open' : ''}`}
+                key={faq.question}
+              >
                 <button
                   onClick={() => setActiveFaq(isOpen ? -1 : index)}
                   aria-expanded={isOpen}

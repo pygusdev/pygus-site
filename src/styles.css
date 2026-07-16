@@ -16,6 +16,8 @@
   --yellow: #ffc93c;
   --ice: #ddf1f6;
   --blue: #79c3d4;
+  --pink: #e563e1;
+  --purple: #9d57f4;
   --white: #ffffff;
   --star: #ffb020;
   --whatsapp: #25d366;
@@ -699,12 +701,14 @@ p {
   overflow: hidden;
   height: 100%;
   border-radius: 34px;
-  background: var(--white);
+  background: #fafafa;
 }
 
 .app-screen-img {
+  /* deixa o topo livre para o notch, com o mesmo fundo do app */
+  margin-top: 58px;
   width: 100%;
-  height: 100%;
+  height: calc(100% - 58px);
   object-fit: cover;
   object-position: top;
 }
@@ -730,51 +734,180 @@ p {
   line-height: 1.7;
 }
 
-.level-list {
+.app-points {
   display: grid;
-  gap: 14px;
+  gap: 12px;
   margin: 0;
   padding: 0;
   list-style: none;
 }
 
-.level-list li {
+.app-points li {
   display: flex;
   align-items: flex-start;
-  gap: 16px;
-  padding: 18px 20px;
+  gap: 12px;
+  padding: 14px 18px;
   border: var(--border);
-  border-radius: 16px;
+  border-radius: 14px;
   background: var(--white);
   box-shadow: var(--shadow-card);
+  font-size: 0.97rem;
+  font-weight: 700;
+  line-height: 1.5;
 }
 
-.level-tag {
+.app-points svg {
   flex: 0 0 auto;
-  padding: 6px 11px;
-  border: var(--border);
-  border-radius: 10px;
-  background: var(--ice);
+  margin-top: 3px;
+  padding: 2px;
+  border-radius: 50%;
+  background: var(--teal);
+  color: var(--white);
+}
+
+/* ========================= levels section ========================= */
+
+.levels-section {
+  width: min(1180px, 100% - 48px);
+  margin: 0 auto;
+  padding: 0 0 110px;
+}
+
+.levels-modes {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.mode-sticker {
   font-size: 0.8rem;
-  font-weight: 900;
-  letter-spacing: 0.03em;
-  text-transform: uppercase;
+  transform: rotate(-1deg);
+}
+
+.mode-sticker:last-child {
+  background: var(--ice);
+  transform: rotate(1deg);
+}
+
+.mode-sticker svg {
   color: var(--teal-deep);
 }
 
-.level-list strong {
-  display: block;
-  margin-bottom: 4px;
-  font-family: Fraunces, Georgia, serif;
-  font-size: 1.05rem;
+.levels-trail {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 18px;
+  align-items: stretch;
 }
 
-.level-list p {
+.levels-trail::before {
+  content: "";
+  position: absolute;
+  top: 46px;
+  right: 4%;
+  left: 4%;
+  border-top: 3px dashed rgba(33, 50, 47, 0.22);
+}
+
+.level-card {
+  --lv: #07c779;
+  --lv-soft: #e9fcf1;
+  --lv-text: #00754d;
+  --tilt: -1.1deg;
+  position: relative;
+  padding: 20px 18px 22px;
+  border: var(--border);
+  border-radius: 18px;
+  background: var(--white);
+  box-shadow: var(--shadow-card);
+  transform: rotate(var(--tilt));
+  transition: transform 220ms ease, box-shadow 220ms ease;
+}
+
+.level-card:nth-child(even) {
+  --tilt: 1.1deg;
+}
+
+.level-card:hover {
+  transform: rotate(0deg) translateY(-7px);
+  box-shadow: 7px 9px 0 rgba(33, 50, 47, 0.14);
+}
+
+/* cores exatas dos níveis no app (paleta Figma) */
+.level-green {
+  --lv: #07c779;
+  --lv-soft: #e9fcf1;
+  --lv-text: #00754d;
+}
+
+.level-orange {
+  --lv: #f47224;
+  --lv-soft: #feefe7;
+  --lv-text: #da580b;
+}
+
+.level-blue {
+  --lv: #4ca1f9;
+  --lv-soft: #e0f2ff;
+  --lv-text: #147af3;
+}
+
+.level-pink {
+  --lv: var(--pink);
+  --lv-soft: #fdcbf8;
+  --lv-text: #ab2bab;
+}
+
+.level-purple {
+  --lv: var(--purple);
+  --lv-soft: #f6ebff;
+  --lv-text: #7725ea;
+}
+
+.level-card-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.level-block {
+  width: 52px;
+  height: 52px;
+  font-size: 1.35rem;
+  background: var(--lv);
+}
+
+.level-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 4px;
+  padding: 5px 10px;
+  border: var(--border);
+  border-radius: 999px;
+  background: var(--lv-soft);
+  font-size: 0.7rem;
+  font-weight: 900;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--lv-text);
+}
+
+.level-card h3 {
+  margin: 16px 0 8px;
+  font-size: 1.14rem;
+}
+
+.level-card p {
   margin: 0;
   color: var(--ink-soft);
-  font-size: 0.94rem;
+  font-size: 0.9rem;
   font-weight: 600;
-  line-height: 1.5;
+  line-height: 1.55;
 }
 
 /* ========================== testimonials ========================== */
@@ -1362,6 +1495,18 @@ p {
     gap: 48px;
   }
 
+  .levels-trail {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .levels-trail::before {
+    content: none;
+  }
+
+  .level-card:last-child {
+    grid-column: span 2;
+  }
+
   .plans-grid {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -1421,6 +1566,19 @@ p {
   .app-section,
   .cta-section {
     width: calc(100% - 36px);
+  }
+
+  .levels-section {
+    width: calc(100% - 36px);
+    padding-bottom: 80px;
+  }
+
+  .levels-trail {
+    grid-template-columns: 1fr;
+  }
+
+  .level-card:last-child {
+    grid-column: auto;
   }
 
   .steps-grid,
