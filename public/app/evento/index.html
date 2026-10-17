@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex" />
+    <title>Pygus</title>
+    <!--
+      Só redireciona o QR de resgate da TV do stand (sem tela).
+      Android: o link https não é verificado e abre no navegador mesmo com o
+      app instalado; o intent abre o app ou cai na Play Store.
+      iOS: o link universal já abre o app; se chegou aqui, não está instalado.
+    -->
+    <script>
+      ;(function () {
+        var PLAY_STORE =
+          'https://play.google.com/store/apps/details?id=com.pygus.profissional'
+        var APP_STORE =
+          'https://apps.apple.com/br/app/pygus-profissional/id6514278911'
+        var params = new URLSearchParams(window.location.search)
+        var eventId = (params.get('e') || '').replace(/[^a-z0-9-]/g, '')
+        var code = (params.get('c') || '').replace(/\D/g, '').slice(0, 6)
+        var appPath = 'evento?e=' + encodeURIComponent(eventId) + '&c=' + code
+        var ua = navigator.userAgent
+
+        if (/Android/i.test(ua)) {
+          window.location.replace(
+            'intent://' +
+              appPath +
+              '#Intent;scheme=pygus;package=com.pygus.profissional;S.browser_fallback_url=' +
+              encodeURIComponent(PLAY_STORE) +
+              ';end',
+          )
+        } else if (
+          /iPhone|iPad|iPod/i.test(ua) ||
+          (/Macintosh/i.test(ua) && navigator.maxTouchPoints > 1)
+        ) {
+          window.location.replace(APP_STORE)
+        } else {
+          window.location.replace('/')
+        }
+      })()
+    </script>
+  </head>
+  <body></body>
+</html>
