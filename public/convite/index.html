@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex,nofollow" />
+    <meta name="referrer" content="no-referrer" />
+    <meta name="apple-itunes-app" content="app-id=6520379140, app-clip-bundle-id=com.pygus.client.Clip, app-clip-display=card" />
+    <meta property="og:title" content="Acesso ao Pygus Paciente" />
+    <meta property="og:description" content="Abra o convite no celular para acessar o app do paciente." />
+    <title>Acesso ao Pygus Paciente</title>
+    <style>
+      :root { font: 1.1rem/1.55 system-ui, sans-serif; color: #193a43; background: #eff8f7; }
+      body { margin: 0; min-height: 100svh; display: grid; place-items: center; }
+      main { max-width: 28rem; padding: 2rem; }
+      h1 { line-height: 1.15; }
+      a { display: inline-block; background: #106a65; color: white; border-radius: .75rem; padding: .8rem 1.3rem; font-weight: 650; }
+      [hidden] { display: none; }
+    </style>
+  </head>
+  <body>
+    <main>
+      <strong>Pygus Paciente</strong>
+      <h1>Acesse o app do paciente</h1>
+      <p id="instruction">Abra este convite no celular em que deseja usar o app.</p>
+      <a id="install" hidden>Instalar o app do paciente</a>
+    </main>
+    <script>
+      const instruction = document.getElementById('instruction')
+      const install = document.getElementById('install')
+      const code = location.hash.slice(1)
+      const isIphone = /iPhone|iPad|iPod/i.test(navigator.userAgent) ||
+        (/Macintosh/i.test(navigator.userAgent) && navigator.maxTouchPoints > 1)
+
+      if (code && !/^[A-Za-z0-9_-]{43}$/.test(code)) {
+        instruction.textContent = 'O convite está incompleto. Solicite outro à sua fono.'
+      } else if (/Android/i.test(navigator.userAgent)) {
+        const store = new URL('https://play.google.com/store/apps/details')
+        store.searchParams.set('id', 'com.pygus.client')
+        if (code) store.searchParams.set('referrer', 'invite=' + code)
+        install.href = store.href
+        install.hidden = false
+        instruction.textContent = 'Instale pela Google Play e toque em Abrir para continuar.'
+      } else if (isIphone && code) {
+        instruction.textContent = 'Abra o cartão do Pygus nesta página antes de instalar. Se o cartão não aparecer, escolha Abrir no Safari no menu do navegador para continuar com este convite.'
+      } else if (isIphone) {
+        install.href = 'https://apps.apple.com/app/id6520379140'
+        install.hidden = false
+        instruction.textContent = 'Abra o app para entrar com sua conta.'
+      }
+    </script>
+  </body>
+</html>

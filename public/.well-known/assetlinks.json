@@ -8,5 +8,15 @@
         "32:4C:4F:A5:69:F8:5E:FE:1D:03:ED:16:69:AC:CE:5E:4F:62:1C:97:2C:57:83:D4:E9:F4:DC:5F:BE:13:EC:DD"
       ]
     }
+  },
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.pygus.client",
+      "sha256_cert_fingerprints": [
+        "E4:C6:88:56:E9:69:96:1D:AB:DC:B8:A5:6A:9A:8B:8A:45:1B:DB:89:1D:10:E9:EC:A6:56:E0:FF:F8:4E:3C:0E"
+      ]
+    }
   }
 ]

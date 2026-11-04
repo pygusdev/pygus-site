@@ -5,7 +5,12 @@
       {
         "appID": "3N6H37ZSQ6.com.pygus.profissional",
         "paths": ["/app/*"]
+      },
+      {
+        "appID": "3N6H37ZSQ6.com.pygus.client",
+        "paths": ["/convite", "/convite/"]
       }
     ]
-  }
+  },
+  "appclips": { "apps": ["3N6H37ZSQ6.com.pygus.client.Clip"] }
 }

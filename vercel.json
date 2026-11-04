@@ -1,6 +1,13 @@
 {
   "headers": [
     {
+      "source": "/convite",
+      "headers": [
+        { "key": "Referrer-Policy", "value": "no-referrer" },
+        { "key": "Cache-Control", "value": "no-store" }
+      ]
+    },
+    {
       "source": "/.well-known/apple-app-site-association",
       "headers": [
         {
@@ -20,6 +27,7 @@
     }
   ],
   "rewrites": [
+    { "source": "/convite", "destination": "/convite/index.html" },
     {
       "source": "/app/evento",
       "destination": "/app/evento/index.html"
