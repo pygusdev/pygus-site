@@ -37,13 +37,13 @@
       h1 { margin: 1.25rem 0 .7rem; font-size: clamp(2rem, 7vw, 2.65rem); line-height: 1.1; letter-spacing: -.035em; }
       p, li { font-size: 1.125rem; line-height: 1.45; }
       p { margin: 0; }
-      #install {
+      .store-link {
         display: flex; align-items: center; justify-content: center; gap: .6rem;
         width: 100%; min-height: 3.75rem; margin-top: 1.25rem; padding: .85rem;
         background: #145e55; color: white; border-radius: 1rem;
         font-size: 1.25rem; font-weight: 700; text-align: center; text-decoration: none;
       }
-      #install:hover { background: #104b44; }
+      .store-link:hover { background: #104b44; }
       svg { width: 1.5rem; height: 1.5rem; flex: none; }
       details { margin-top: 1rem; }
       summary { list-style: none; cursor: pointer; border-radius: 1rem; }
@@ -62,6 +62,8 @@
       ol { margin: .75rem 0 0; padding-left: 1.6rem; }
       li { margin-top: .45rem; padding-left: .2rem; }
       li::marker { color: #145e55; font-weight: 750; }
+      .manual { margin-top: 1rem; padding-top: 1rem; border-top: 1px solid #cfdfd8; }
+      .manual .store-link { margin-top: .65rem; }
       .next { margin-top: 1.25rem; color: #405a54; }
       :focus-visible { outline: 3px solid #ad5100; outline-offset: 3px; }
       [hidden] { display: none !important; }
@@ -72,7 +74,7 @@
       <div class="brand"><img src="/icon.svg" alt="" width="44" height="44" /> Pygus Paciente</div>
       <h1 id="title">Abra o convite no celular</h1>
       <p id="instruction">No celular que vai usar o aplicativo, toque no link que a fono enviou.</p>
-      <a id="install" hidden>
+      <a id="install" class="store-link" hidden>
         <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m-5-5 5 5 5-5M4 16v4h16v-4"/></svg>
         Baixar o aplicativo
       </a>
@@ -95,6 +97,10 @@
           <li>Escolha <strong>Abrir no Safari</strong>.</li>
           <li>No Safari, vá ao início da página e procure <strong>Pygus Paciente</strong>.</li>
         </ol>
+        <div class="manual">
+          <p id="manual-hint"><strong>Já tem e-mail e senha?</strong> Se o botão não apareceu, você pode baixar o app e entrar com eles.</p>
+          <a id="manual-install" class="store-link" aria-describedby="manual-hint">Baixar pela App Store</a>
+        </div>
       </details>
       <p id="next" class="next" hidden></p>
     </main>
@@ -103,6 +109,7 @@
       const instruction = document.getElementById('instruction')
       const install = document.getElementById('install')
       const next = document.getElementById('next')
+      const appStoreUrl = 'https://apps.apple.com/app/id6520379140'
       const code = location.hash.slice(1)
       const isIphone = /iPhone|iPad|iPod/i.test(navigator.userAgent) ||
         (/Macintosh/i.test(navigator.userAgent) && navigator.maxTouchPoints > 1)
@@ -124,10 +131,11 @@
         title.textContent = 'Baixe o aplicativo'
         instruction.hidden = true
         document.getElementById('ios-guide').hidden = false
+        document.getElementById('manual-install').href = appStoreUrl
         next.textContent = 'Depois, toque em Instalar na App Store. Quando terminar, toque em Abrir.'
         next.hidden = false
       } else if (isIphone) {
-        install.href = 'https://apps.apple.com/app/id6520379140'
+        install.href = appStoreUrl
         install.hidden = false
         title.textContent = 'Baixe o aplicativo'
         instruction.textContent = 'Toque no botão abaixo para abrir a loja de aplicativos.'

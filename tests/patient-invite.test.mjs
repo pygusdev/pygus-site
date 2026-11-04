@@ -9,7 +9,7 @@ const code = 'a'.repeat(43)
 function openPage(userAgent, hash) {
   const elements = {
     title: {}, instruction: {}, install: { hidden: true },
-    'ios-guide': { hidden: true }, next: { hidden: true },
+    'ios-guide': { hidden: true }, 'manual-install': {}, next: { hidden: true },
   }
   runInNewContext(html.match(/<script>([\s\S]*?)<\/script>/)[1], {
     URL, navigator: { userAgent }, location: { hash },
@@ -33,9 +33,11 @@ test('invokes the iOS Clip before installation and keeps previews generic', () =
   assert.equal(page['ios-guide'].hidden, false)
   assert.equal(page.install.hidden, true)
   assert.equal(page.next.hidden, false)
+  assert.equal(page['manual-install'].href, 'https://apps.apple.com/app/id6520379140')
   const preview = openPage('WhatsApp', '#' + code)
   assert.equal(preview.install.hidden, true)
   assert.equal(preview['ios-guide'].hidden, true)
+  assert.equal(preview['manual-install'].href, undefined)
   assert.match(html, /name="referrer" content="no-referrer"/)
 })
 
@@ -47,6 +49,7 @@ test('offers the patient App Store listing without a code and asks for a new lin
   const invalid = openPage('iPhone', '#malformed')
   assert.equal(invalid.install.hidden, true)
   assert.equal(invalid['ios-guide'].hidden, true)
+  assert.equal(invalid['manual-install'].href, undefined)
   assert.equal(invalid.next.hidden, true)
   assert.match(invalid.instruction.textContent, /envie o convite novamente/)
 })
