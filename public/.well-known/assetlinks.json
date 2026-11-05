@@ -15,7 +15,8 @@
       "namespace": "android_app",
       "package_name": "com.pygus.client",
       "sha256_cert_fingerprints": [
-        "E4:C6:88:56:E9:69:96:1D:AB:DC:B8:A5:6A:9A:8B:8A:45:1B:DB:89:1D:10:E9:EC:A6:56:E0:FF:F8:4E:3C:0E"
+        "E4:C6:88:56:E9:69:96:1D:AB:DC:B8:A5:6A:9A:8B:8A:45:1B:DB:89:1D:10:E9:EC:A6:56:E0:FF:F8:4E:3C:0E",
+        "F8:EC:9C:25:2F:A8:61:C9:86:A3:22:CE:DE:31:83:12:9D:0C:D7:1A:DB:6E:BD:E6:BB:3C:5B:E7:B6:DD:BC:8F"
       ]
     }
   }
