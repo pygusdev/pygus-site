@@ -9,69 +9,83 @@
     <meta property="og:title" content="Acesso ao Pygus Paciente" />
     <meta property="og:description" content="Abra o convite no celular para acessar o app do paciente." />
     <title>Acesso ao Pygus Paciente</title>
+    <link rel="stylesheet" href="/convite/brand.css" />
     <style>
       :root {
-        font-family: system-ui, -apple-system, sans-serif;
-        color: #193b38;
-        background: #eef6f2;
+        font-family: Poppins, sans-serif;
+        color: #252528;
+        background: #fff;
+        font-synthesis: none;
+        -webkit-text-size-adjust: 100%;
       }
       * { box-sizing: border-box; }
       body {
         margin: 0;
         min-height: 100vh;
         min-height: 100svh;
-        display: flex;
-        padding: clamp(.75rem, 4vw, 2rem);
+        background-image: var(--pygus-login-background);
+        background-repeat: repeat-x;
+        background-size: auto 12rem;
       }
       main {
         width: min(100%, 30rem);
-        margin: auto;
-        padding: clamp(1.25rem, 5vw, 2.25rem);
-        background: white;
-        border: 1px solid #cfdfd8;
-        border-radius: 1.75rem;
-        box-shadow: 0 .75rem 3rem #17473512;
+        margin: 0 auto;
+        padding: 1.5rem 1.5rem 2rem;
       }
-      .brand { display: flex; align-items: center; gap: .7rem; font-size: 1.15rem; font-weight: 750; }
-      .brand img { width: 2.75rem; height: 2.75rem; padding: .25rem; border-radius: .8rem; background: #fff2c9; }
-      h1 { margin: 1.25rem 0 .7rem; font-size: clamp(2rem, 7vw, 2.65rem); line-height: 1.1; letter-spacing: -.035em; }
-      p, li { font-size: 1.125rem; line-height: 1.45; }
+      .brand { display: flex; flex-direction: column; align-items: center; gap: .5rem; color: #55555e; font-size: .875rem; }
+      .brand img { display: block; width: 9rem; height: auto; }
+      h1 { margin: 1.5rem 0 .75rem; font-size: 1.75rem; font-weight: 500; line-height: 1.3; letter-spacing: -.025em; text-align: center; }
+      p, li { font-size: 1rem; line-height: 1.6; }
       p { margin: 0; }
+      #instruction { color: #55555e; text-align: center; }
       .store-link {
         display: flex; align-items: center; justify-content: center; gap: .6rem;
-        width: 100%; min-height: 3.75rem; margin-top: 1.25rem; padding: .85rem;
-        background: #145e55; color: white; border-radius: 1rem;
-        font-size: 1.25rem; font-weight: 700; text-align: center; text-decoration: none;
+        width: 100%; min-height: 3.5rem; margin-top: 1.5rem; padding: .85rem 1rem;
+        background: #f47224; color: #18181b; border: 1px solid #f47224; border-radius: .75rem;
+        font-size: 1.0625rem; font-weight: 500; text-align: center; text-decoration: none;
       }
-      .store-link:hover { background: #104b44; }
+      .store-link:hover { background: #ea842f; border-color: #ea842f; }
       svg { width: 1.5rem; height: 1.5rem; flex: none; }
       details { margin-top: 1rem; }
       summary { list-style: none; cursor: pointer; border-radius: 1rem; }
-      .first-step { display: block; padding: 1.15rem 1.25rem; border-radius: 1.15rem; background: #145e55; color: white; }
-      .step-label { display: flex; align-items: center; gap: .55rem; font-weight: 700; color: #ffdf86; }
-      .step-title { display: block; margin: .45rem 0; font-size: clamp(1.6rem, 6vw, 2rem); line-height: 1.15; }
-      .step-text { display: block; font-size: 1.125rem; line-height: 1.45; }
+      .first-step { display: block; padding: 1rem; border: 1px solid #fccfb6; border-radius: 1rem; background: #feefe7; }
+      .step-label { display: flex; align-items: center; gap: .5rem; font-size: .875rem; font-weight: 500; color: #aa4409; }
+      .step-title { display: block; margin: .5rem 0; font-size: 1.5rem; font-weight: 500; line-height: 1.3; letter-spacing: -.02em; }
+      .step-text { display: block; font-size: 1rem; line-height: 1.6; color: #3c3c43; }
+      .step-text strong { font-weight: 500; }
       .help-label {
         display: flex; justify-content: space-between; align-items: center; gap: .5rem;
-        margin-top: .75rem; min-height: 3.5rem; padding: .75rem 1rem;
-        border: 1px solid #b9d0c9; border-radius: 1rem;
-        color: #154f49; font-size: 1.125rem; font-weight: 700;
+        margin-top: .75rem; min-height: 3.25rem; padding: .75rem 1rem;
+        border: 1px solid #d5d5da; border-radius: .75rem;
+        color: #3c3c43; font-size: 1rem; font-weight: 500;
       }
       summary::-webkit-details-marker { display: none; }
       details[open] .help-label svg { transform: rotate(180deg); }
-      ol { margin: .75rem 0 0; padding-left: 1.6rem; }
-      li { margin-top: .45rem; padding-left: .2rem; }
-      li::marker { color: #145e55; font-weight: 750; }
-      .manual { margin-top: 1rem; padding-top: 1rem; border-top: 1px solid #cfdfd8; }
-      .manual .store-link { margin-top: .65rem; }
-      .next { margin-top: 1.25rem; color: #405a54; }
-      :focus-visible { outline: 3px solid #ad5100; outline-offset: 3px; }
+      ol { margin: 1rem 0 0; padding-left: 1.5rem; color: #55555e; }
+      li { margin-top: .75rem; padding-left: .25rem; }
+      li::marker { color: #aa4409; font-weight: 500; }
+      .manual { margin-top: 1.25rem; padding-top: 1.25rem; border-top: 1px solid #e9e9ed; color: #55555e; }
+      .manual .store-link { margin-top: 1rem; }
+      .next { margin-top: 1.25rem; padding-top: 1rem; border-top: 1px solid #e9e9ed; color: #55555e; }
+      :focus-visible { outline: 3px solid #aa4409; outline-offset: 4px; }
+      @media (min-width: 600px) {
+        main { padding-top: 3.5rem; }
+        .brand img { width: 10.25rem; }
+      }
+      @media (max-width: 360px) {
+        main { padding: 1rem 1.25rem 2rem; }
+        h1 { margin-top: 1.5rem; font-size: 1.625rem; }
+        .step-title { font-size: 1.375rem; }
+      }
       [hidden] { display: none !important; }
     </style>
   </head>
   <body>
     <main>
-      <div class="brand"><img src="/icon.svg" alt="" width="44" height="44" /> Pygus Paciente</div>
+      <div class="brand">
+        <img src="/convite/logo.svg" alt="Pygus" width="155" height="74" />
+        <span>Aplicativo do paciente</span>
+      </div>
       <h1 id="title">Abra o convite no celular</h1>
       <p id="instruction">No celular que vai usar o aplicativo, toque no link que a fono enviou.</p>
       <a id="install" class="store-link" hidden>
@@ -132,7 +146,7 @@
         instruction.hidden = true
         document.getElementById('ios-guide').hidden = false
         document.getElementById('manual-install').href = appStoreUrl
-        next.textContent = 'Depois, toque em Instalar na App Store. Quando terminar, toque em Abrir.'
+        next.textContent = 'Depois, toque em Instalar. Ao terminar, toque em Abrir.'
         next.hidden = false
       } else if (isIphone) {
         install.href = appStoreUrl
